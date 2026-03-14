@@ -11,33 +11,33 @@ export const metadata: Metadata = {
 
 export default function SolucoesPage() {
   return (
-    <div>
-      <section className="border-b border-graphite/10 bg-light-gray px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
+    <div className="bg-white dark:bg-graphite">
+      <section className="border-b border-graphite/10 dark:border-white/10 bg-light-gray dark:bg-graphite/80 px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
         <div className="mx-auto max-w-[1280px]">
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">
             SOLUÇÕES
           </p>
-          <h1 className="mt-2 text-3xl font-bold text-graphite sm:text-4xl lg:text-5xl">
+          <h1 className="mt-2 text-3xl font-bold text-graphite dark:text-white sm:text-4xl lg:text-5xl">
             Capacidades por resultado
           </h1>
-          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-graphite/80">
+          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-graphite/80 dark:text-white/80">
             Organizamos o que fazemos pelo resultado que você precisa, não apenas
             por tecnologia.
           </p>
         </div>
       </section>
 
-      <section className="px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
+      <section className="px-4 py-16 sm:px-6 sm:py-20 lg:px-8 bg-white dark:bg-graphite">
         <div className="mx-auto max-w-[1280px]">
           <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-2">
             {solutions.map((sol) => (
               <article
                 key={sol.id}
                 id={sol.id}
-                className="group rounded-xl border border-graphite/10 bg-white p-6 shadow-sm transition-all hover:border-primary/30 hover:shadow-md"
+                className="group rounded-xl border border-graphite/10 dark:border-white/10 bg-white dark:bg-white/5 p-6 shadow-sm transition-all hover:border-primary/30 hover:shadow-md"
               >
-                <h2 className="text-xl font-bold text-graphite">{sol.title}</h2>
-                <p className="mt-3 text-sm leading-relaxed text-graphite/80">
+                <h2 className="text-xl font-bold text-graphite dark:text-white">{sol.title}</h2>
+                <p className="mt-3 text-sm leading-relaxed text-graphite/80 dark:text-white/80">
                   {sol.description}
                 </p>
                 <div className="mt-4 flex flex-wrap gap-2">
