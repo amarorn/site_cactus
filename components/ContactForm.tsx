@@ -102,7 +102,7 @@ export function ContactForm() {
           name="name"
           type="text"
           required
-          className="mt-1 w-full rounded-lg border border-graphite/20 px-4 py-2.5 text-graphite focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+          className="mt-1 w-full rounded-lg border border-graphite/20 dark:border-white/20 bg-white dark:bg-white/5 px-4 py-2.5 text-graphite dark:text-white focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
           aria-invalid={!!errors.name}
           aria-describedby={errors.name ? "name-error" : undefined}
         />
@@ -113,7 +113,7 @@ export function ContactForm() {
         )}
       </div>
       <div>
-        <label htmlFor="email" className="block text-sm font-medium text-graphite">
+        <label htmlFor="email" className="block text-sm font-medium text-graphite dark:text-white">
           E-mail *
         </label>
         <input
@@ -121,7 +121,7 @@ export function ContactForm() {
           name="email"
           type="email"
           required
-          className="mt-1 w-full rounded-lg border border-graphite/20 px-4 py-2.5 text-graphite focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+          className="mt-1 w-full rounded-lg border border-graphite/20 dark:border-white/20 bg-white dark:bg-white/5 px-4 py-2.5 text-graphite dark:text-white focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
           aria-invalid={!!errors.email}
           aria-describedby={errors.email ? "email-error" : undefined}
         />
@@ -132,35 +132,35 @@ export function ContactForm() {
         )}
       </div>
       <div>
-        <label htmlFor="company" className="block text-sm font-medium text-graphite">
+        <label htmlFor="company" className="block text-sm font-medium text-graphite dark:text-white">
           Empresa
         </label>
         <input
           id="company"
           name="company"
           type="text"
-          className="mt-1 w-full rounded-lg border border-graphite/20 px-4 py-2.5 text-graphite focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+          className="mt-1 w-full rounded-lg border border-graphite/20 dark:border-white/20 bg-white dark:bg-white/5 px-4 py-2.5 text-graphite dark:text-white focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
         />
       </div>
       <div>
-        <label htmlFor="role" className="block text-sm font-medium text-graphite">
+        <label htmlFor="role" className="block text-sm font-medium text-graphite dark:text-white">
           Cargo
         </label>
         <input
           id="role"
           name="role"
           type="text"
-          className="mt-1 w-full rounded-lg border border-graphite/20 px-4 py-2.5 text-graphite focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+          className="mt-1 w-full rounded-lg border border-graphite/20 dark:border-white/20 bg-white dark:bg-white/5 px-4 py-2.5 text-graphite dark:text-white focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
         />
       </div>
       <div>
-        <label htmlFor="service" className="block text-sm font-medium text-graphite">
+        <label htmlFor="service" className="block text-sm font-medium text-graphite dark:text-white">
           Serviço de interesse
         </label>
         <select
           id="service"
           name="service"
-          className="mt-1 w-full rounded-lg border border-graphite/20 px-4 py-2.5 text-graphite focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+          className="mt-1 w-full rounded-lg border border-graphite/20 dark:border-white/20 bg-white dark:bg-white/5 px-4 py-2.5 text-graphite dark:text-white focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
         >
           <option value="">Selecione</option>
           <option value="mobile">Aplicativos mobile</option>
@@ -175,7 +175,7 @@ export function ContactForm() {
         </select>
       </div>
       <div>
-        <label htmlFor="message" className="block text-sm font-medium text-graphite">
+        <label htmlFor="message" className="block text-sm font-medium text-graphite dark:text-white">
           Mensagem *
         </label>
         <textarea
@@ -183,7 +183,7 @@ export function ContactForm() {
           name="message"
           rows={4}
           required
-          className="mt-1 w-full rounded-lg border border-graphite/20 px-4 py-2.5 text-graphite focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+          className="mt-1 w-full rounded-lg border border-graphite/20 dark:border-white/20 bg-white dark:bg-white/5 px-4 py-2.5 text-graphite dark:text-white focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
           aria-invalid={!!errors.message}
           aria-describedby={errors.message ? "message-error" : undefined}
         />
