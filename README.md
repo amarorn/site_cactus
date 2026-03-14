@@ -1,36 +1,63 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Cactus System - Site Institucional
 
-## Getting Started
+Site institucional da Cactus System. Empresa de tecnologia com foco em desenvolvimento de software, dados e IA.
 
-First, run the development server:
+## Stack
+
+- Next.js 16 (App Router)
+- React 19
+- TypeScript
+- Tailwind CSS 4
+- Framer Motion
+- Lucide Icons
+- Zod
+
+## Execução
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Acesse [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Build
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+npm start
+```
 
-## Learn More
+## Estrutura
 
-To learn more about Next.js, take a look at the following resources:
+```
+/app              Rotas e layouts
+/components       Componentes React
+/content          Conteúdo editável (empresa, serviços, clientes, etc.)
+/lib              Utilitários
+/public/brand     Logos e assets de marca
+/types            Tipos TypeScript
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Conteúdo editável
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Centralize alterações em:
 
-## Deploy on Vercel
+- `content/company.ts` - Dados da empresa
+- `content/contact.ts` - E-mail, WhatsApp, endereço
+- `content/clients.ts` - Lista de clientes
+- `content/services.ts` - Serviços da home
+- `content/servicesDetail.ts` - Detalhes dos serviços
+- `content/solutions.ts` - Soluções por resultado
+- `content/cases.ts` - Cases de clientes
+- `content/about.ts` - Sobre a empresa
+- `content/navigation.ts` - Links do menu e footer
+- `content/seo.ts` - SEO e URL do site
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Validação antes de publicar
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- [ ] Grafia de clientes em `content/clients.ts`
+- [ ] Contatos oficiais em `content/contact.ts` (WhatsApp, telefone, endereço)
+- [ ] URL em `content/seo.ts` para produção
+- [ ] Integração do formulário de contato com serviço de e-mail (ver `app/contato/actions.ts`)
+- [ ] Links de redes sociais em `content/seo.ts` se houver
