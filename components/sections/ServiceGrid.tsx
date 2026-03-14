@@ -23,14 +23,15 @@ export function ServiceGrid() {
             return (
               <motion.div
                 key={service.id}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-20px" }}
-                transition={{ duration: 0.4, delay: i * 0.05 }}
+                viewport={{ once: true, margin: "-40px" }}
+                transition={{ duration: 0.5, delay: i * 0.06, ease: [0.22, 1, 0.36, 1] }}
+                whileHover={{ y: -4 }}
               >
                 <Link
                   href={`/servicos#${service.id}`}
-                  className="group flex h-full flex-col rounded-xl border border-graphite/10 dark:border-white/10 bg-white dark:bg-white/5 p-6 shadow-sm transition-all hover:border-primary/30 hover:shadow-md"
+                  className="group flex h-full flex-col rounded-xl border border-graphite/10 dark:border-white/10 bg-white dark:bg-white/5 p-6 shadow-sm transition-all duration-300 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5"
                 >
                   <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-white">
                     <Icon className="h-6 w-6" />

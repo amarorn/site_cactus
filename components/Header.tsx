@@ -1,12 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { ThemeToggle } from "./ThemeToggle";
+import { Logo } from "./Logo";
 import { navLinks } from "@/content/navigation";
 import { contact } from "@/content/contact";
 import { cn } from "@/lib/utils";
@@ -23,28 +23,7 @@ export function Header() {
       )}
     >
       <div className="mx-auto flex h-16 max-w-[1280px] items-center justify-between px-4 sm:px-6 lg:px-8">
-        <Link
-          href="/"
-          className="relative flex items-center gap-2"
-          aria-label="Cactus System - início"
-        >
-          <Image
-            src="/brand/logo-primary-light.png"
-            alt="Cactus System"
-            width={140}
-            height={40}
-            className="h-9 w-auto dark:hidden"
-            priority
-          />
-          <Image
-            src="/brand/logo-primary-dark.png"
-            alt="Cactus System"
-            width={140}
-            height={40}
-            className="hidden h-9 w-auto dark:block"
-            priority
-          />
-        </Link>
+        <Logo />
 
         <nav className="hidden items-center gap-8 md:flex" aria-label="Principal">
           {navLinks.map((link) => (

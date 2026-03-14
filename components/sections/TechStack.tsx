@@ -44,13 +44,18 @@ export function TechStack() {
           transition={{ delay: 0.2 }}
           className="mt-12 flex flex-wrap justify-center gap-3"
         >
-          {specialities.map((item) => (
-            <span
+          {specialities.map((item, i) => (
+            <motion.span
               key={item}
+              initial={{ opacity: 0, y: 8 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: i * 0.04 }}
+              whileHover={{ scale: 1.05, y: -2 }}
               className="rounded-full border border-white/20 bg-white/5 px-5 py-2.5 text-sm font-medium backdrop-blur transition-colors hover:border-primary/50 hover:bg-primary/20"
             >
               {item}
-            </span>
+            </motion.span>
           ))}
         </motion.div>
       </div>

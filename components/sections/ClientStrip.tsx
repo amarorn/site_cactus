@@ -21,13 +21,18 @@ export function ClientStrip() {
           viewport={{ once: true }}
           className="flex flex-wrap items-center justify-center gap-4 sm:gap-6"
         >
-          {clientNames.map((name) => (
-            <span
+          {clientNames.map((name, i) => (
+            <motion.span
               key={name}
-              className="rounded-lg border border-graphite/15 dark:border-white/20 bg-white dark:bg-white/5 px-5 py-2.5 text-sm font-medium text-graphite dark:text-white/90 shadow-sm"
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: i * 0.05 }}
+              whileHover={{ scale: 1.02, y: -2 }}
+              className="rounded-lg border border-graphite/15 dark:border-white/20 bg-white dark:bg-white/5 px-5 py-2.5 text-sm font-medium text-graphite dark:text-white/90 shadow-sm transition-shadow hover:shadow-md"
             >
               {name}
-            </span>
+            </motion.span>
           ))}
         </motion.div>
       </div>

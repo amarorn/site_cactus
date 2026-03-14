@@ -27,6 +27,33 @@ body {
   color: var(--foreground);
 }
 
+@keyframes grid-drift {
+  0%, 100% { background-position: 0 0; }
+  50% { background-position: 64px 64px; }
+}
+
+@keyframes mesh-pulse {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(1.03); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) translateX(0); }
+  33% { transform: translateY(-6px) translateX(3px); }
+  66% { transform: translateY(4px) translateX(-3px); }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .motion-grid { animation: grid-drift 35s ease-in-out infinite; }
+  .motion-mesh { animation: mesh-pulse 14s ease-in-out infinite; }
+  .motion-mesh-delay { animation: mesh-pulse 16s ease-in-out infinite 1.5s; }
+  .motion-float { animation: float 22s ease-in-out infinite; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .motion-grid, .motion-mesh, .motion-mesh-delay, .motion-float { animation: none; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

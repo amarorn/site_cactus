@@ -32,8 +32,15 @@ const steps = [
 
 export function ProcessTimeline() {
   return (
-    <section className="border-t border-graphite/10 dark:border-white/10 bg-light-gray dark:bg-graphite/50 py-20 sm:py-24">
-      <div className="mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-8">
+    <section className="relative overflow-hidden border-t border-graphite/10 dark:border-white/10 bg-light-gray dark:bg-graphite/50 py-20 sm:py-24">
+      <div
+        className="pointer-events-none absolute inset-0 opacity-[0.02] dark:opacity-[0.04]"
+        style={{
+          backgroundImage: `radial-gradient(circle at 2px 2px, currentColor 1px, transparent 0)`,
+          backgroundSize: "40px 40px",
+        }}
+      />
+      <div className="relative mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -58,10 +65,16 @@ export function ProcessTimeline() {
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.4, delay: i * 0.1 }}
+              transition={{ duration: 0.5, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
               className="relative flex gap-8 border-l-2 border-primary/30 pl-8 pb-12 last:pb-0"
             >
-              <div className="absolute -left-[9px] top-0 h-4 w-4 rounded-full bg-primary" />
+              <motion.div
+                initial={{ scale: 0 }}
+                whileInView={{ scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.3, delay: i * 0.08 + 0.1 }}
+                className="absolute -left-[9px] top-0 h-4 w-4 rounded-full bg-primary"
+              />
               <div>
                 <h3 className="text-lg font-semibold text-graphite dark:text-white">
                   {step.title}
