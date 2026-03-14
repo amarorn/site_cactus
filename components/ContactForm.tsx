@@ -75,8 +75,8 @@ export function ContactForm() {
 
   if (status === "success") {
     return (
-      <div className="rounded-xl border border-primary/30 bg-primary/5 p-6">
-        <p className="font-medium text-graphite">
+      <div className="rounded-xl border border-primary/30 bg-primary/5 dark:bg-primary/10 p-6">
+        <p className="font-medium text-graphite dark:text-white">
           Mensagem enviada com sucesso. Em breve entraremos em contato.
         </p>
       </div>
@@ -94,7 +94,7 @@ export function ContactForm() {
         aria-hidden
       />
       <div>
-        <label htmlFor="name" className="block text-sm font-medium text-graphite">
+        <label htmlFor="name" className="block text-sm font-medium text-graphite dark:text-white">
           Nome *
         </label>
         <input

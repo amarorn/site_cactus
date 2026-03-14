@@ -12,16 +12,16 @@ export const metadata: Metadata = {
 
 export default function SobrePage() {
   return (
-    <div>
-      <section className="border-b border-graphite/10 bg-light-gray px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
+    <div className="bg-white dark:bg-graphite">
+      <section className="border-b border-graphite/10 dark:border-white/10 bg-light-gray dark:bg-graphite/80 px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
         <div className="mx-auto max-w-[1280px]">
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">
             SOBRE
           </p>
-          <h1 className="mt-2 text-3xl font-bold text-graphite sm:text-4xl lg:text-5xl">
+          <h1 className="mt-2 text-3xl font-bold text-graphite dark:text-white sm:text-4xl lg:text-5xl">
             A {company.name}
           </h1>
-          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-graphite/80">
+          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-graphite/80 dark:text-white/80">
             {about.positioning}
           </p>
         </div>
@@ -31,14 +31,14 @@ export default function SobrePage() {
         <div className="mx-auto max-w-[1280px]">
           <div className="grid gap-16 lg:grid-cols-2">
             <div>
-              <h2 className="text-xl font-bold text-graphite">Visão de trabalho</h2>
-              <p className="mt-4 text-base leading-relaxed text-graphite/80">
+              <h2 className="text-xl font-bold text-graphite dark:text-white">Visão de trabalho</h2>
+              <p className="mt-4 text-base leading-relaxed text-graphite/80 dark:text-white/80">
                 {about.vision}
               </p>
             </div>
             <div>
-              <h2 className="text-xl font-bold text-graphite">Cultura</h2>
-              <p className="mt-4 text-base leading-relaxed text-graphite/80">
+              <h2 className="text-xl font-bold text-graphite dark:text-white">Cultura</h2>
+              <p className="mt-4 text-base leading-relaxed text-graphite/80 dark:text-white/80">
                 {about.culture}
               </p>
             </div>
@@ -46,19 +46,19 @@ export default function SobrePage() {
         </div>
       </section>
 
-      <section className="border-t border-graphite/10 bg-light-gray px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
+      <section className="border-t border-graphite/10 dark:border-white/10 bg-light-gray dark:bg-graphite/50 px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
         <div className="mx-auto max-w-[1280px]">
-          <h2 className="text-xl font-bold text-graphite">
+          <h2 className="text-xl font-bold text-graphite dark:text-white">
             Princípios de trabalho
           </h2>
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {about.principles.map((p) => (
               <div
                 key={p.title}
-                className="rounded-xl border border-graphite/10 bg-white p-6"
+                className="rounded-xl border border-graphite/10 dark:border-white/10 bg-white dark:bg-white/5 p-6"
               >
-                <h3 className="font-semibold text-graphite">{p.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-graphite/80">
+                <h3 className="font-semibold text-graphite dark:text-white">{p.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-graphite/80 dark:text-white/80">
                   {p.description}
                 </p>
               </div>
@@ -67,12 +67,12 @@ export default function SobrePage() {
         </div>
       </section>
 
-      <section className="px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
+      <section className="px-4 py-16 sm:px-6 sm:py-20 lg:px-8 bg-white dark:bg-graphite">
         <div className="mx-auto max-w-[1280px]">
-          <h2 className="text-xl font-bold text-graphite">
+          <h2 className="text-xl font-bold text-graphite dark:text-white">
             Composição do time
           </h2>
-          <p className="mt-4 text-base text-graphite/80">
+          <p className="mt-4 text-base text-graphite/80 dark:text-white/80">
             Equipe multidisciplinar com profissionais altamente capacitados em
             suas áreas.
           </p>
@@ -80,7 +80,7 @@ export default function SobrePage() {
             {about.team.map((role) => (
               <span
                 key={role}
-                className="rounded-full border border-primary/30 bg-primary/5 px-5 py-2 text-sm font-medium text-graphite"
+                className="rounded-full border border-primary/30 bg-primary/5 px-5 py-2 text-sm font-medium text-graphite dark:text-white"
               >
                 {role}
               </span>
@@ -89,7 +89,7 @@ export default function SobrePage() {
         </div>
       </section>
 
-      <section className="border-t border-graphite/10 bg-graphite px-4 py-16 sm:px-6 sm:py-20 lg:px-8 text-white">
+      <section className="border-t border-graphite/10 dark:border-white/10 bg-graphite px-4 py-16 sm:px-6 sm:py-20 lg:px-8 text-white">
         <div className="mx-auto max-w-[1280px] text-center">
           <p className="text-lg font-medium">Quer conhecer melhor?</p>
           <Link
