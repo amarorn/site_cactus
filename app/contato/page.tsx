@@ -3,6 +3,8 @@ import { ContactForm } from "@/components/ContactForm";
 import { contact } from "@/content/contact";
 import { company } from "@/content/company";
 
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: "Contato | Cactus System",
   description:
