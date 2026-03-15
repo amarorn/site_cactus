@@ -26,6 +26,8 @@ const poppins = Poppins({
 
 const GOOGLE_SITE_VERIFICATION =
   process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION?.trim() || "";
+const GA_MEASUREMENT_ID =
+  process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID?.trim() || "G-KEE4D49L62";
 
 export const metadata: Metadata = {
   title: "Cactus System | Desenvolvimento de Software, Dados e IA",
@@ -61,6 +63,17 @@ export default function RootLayout({
         }}
       />
       <body className={`${poppins.variable} font-sans antialiased`} suppressHydrationWarning>
+        {GA_MEASUREMENT_ID && (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+              strategy="afterInteractive"
+            />
+            <Script id="ga-config" strategy="afterInteractive">
+              {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${GA_MEASUREMENT_ID}');`}
+            </Script>
+          </>
+        )}
         <FirebaseInit />
         <ThemeProvider>
           <A11yProvider>
