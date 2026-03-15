@@ -23,13 +23,15 @@ const ChatWidget = dynamic(
   { ssr: false }
 );
 
+const chatEnabled = process.env.NEXT_PUBLIC_CHAT_ENABLED === "true";
+
 export function ClientOnlyWidgets() {
   return (
     <>
       <ScrollProgress />
       <CustomCursor />
       <WhatsAppFab />
-      <ChatWidget />
+      {chatEnabled && <ChatWidget />}
       <A11yWidget />
     </>
   );
