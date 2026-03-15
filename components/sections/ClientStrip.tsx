@@ -7,22 +7,22 @@ import { clients } from "@/content/clients";
 const LOGO_BASE = "https://logo.clearbit.com";
 const LOCAL_BASE = "/logos/clients";
 
-type LogoSource = "localPng" | "localSvg" | "clearbit" | "text";
+type LogoSource = "localSvg" | "localPng" | "clearbit" | "text";
 
 function getLogoSrc(
   source: LogoSource,
   slug: string,
   domain: string
 ): string | null {
-  if (source === "localPng") return `${LOCAL_BASE}/${slug}.png`;
   if (source === "localSvg") return `${LOCAL_BASE}/${slug}.svg`;
+  if (source === "localPng") return `${LOCAL_BASE}/${slug}.png`;
   if (source === "clearbit") return `${LOGO_BASE}/${domain}`;
   return null;
 }
 
 function nextSource(source: LogoSource): LogoSource {
-  if (source === "localPng") return "localSvg";
-  if (source === "localSvg") return "clearbit";
+  if (source === "localSvg") return "localPng";
+  if (source === "localPng") return "clearbit";
   if (source === "clearbit") return "text";
   return "text";
 }
@@ -61,7 +61,7 @@ function ClientLogo({
   client: (typeof clients)[number];
   index: number;
 }) {
-  const [source, setSource] = useState<LogoSource>("localPng");
+  const [source, setSource] = useState<LogoSource>("localSvg");
   const src = getLogoSrc(source, client.slug, client.domain);
 
   const handleError = () => {
@@ -83,12 +83,18 @@ function ClientLogo({
       {source !== "text" && src ? (
         <div className="flex min-h-[28px] w-full items-center justify-center sm:min-h-[32px]">
           <img
+            key={src}
             src={src}
             alt={client.name}
             width={120}
             height={40}
+            decoding="async"
             className={`h-6 w-auto max-w-[100px] object-contain object-center sm:h-7 sm:max-w-[120px] ${imgClass}`}
             onError={handleError}
+            onLoad={(e) => {
+              const target = e.currentTarget;
+              if (target.naturalWidth === 0 || target.naturalHeight === 0) handleError();
+            }}
           />
         </div>
       ) : (
