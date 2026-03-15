@@ -20,6 +20,7 @@ Usados no job **build** para o site estatico ter Firebase e verificacao Google.
 | `NEXT_PUBLIC_FIREBASE_APP_ID` | Firebase Console > mesmo lugar > appId |
 | `NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID` | Firebase Console > mesmo lugar > measurementId (ex.: `G-XXXXXXXXXX`) |
 | `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` | Search Console > Verificacao de propriedade > meta tag > valor do `content="AQUI"` (pode ser vazio) |
+| `NEXT_PUBLIC_GA_MEASUREMENT_ID` | Google Analytics 4 > Admin > Fluxos de dados > ID de medicao (ex.: `G-KEE4D49L62`). Pode ser o mesmo do Firebase measurementId. Vazio = GA desativado. |
 
 ---
 
