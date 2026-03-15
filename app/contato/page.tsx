@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { ContactForm } from "@/components/ContactForm";
 import { contact } from "@/content/contact";
 import { company } from "@/content/company";
-
-export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "Contato | Cactus System",
@@ -11,19 +10,7 @@ export const metadata: Metadata = {
     "Entre em contato com a Cactus System. Desenvolvimento de software, dados e IA.",
 };
 
-const validServiceIds = [
-  "mobile", "web", "systems", "data-arch", "data-eng",
-  "analytics", "data-science", "ai", "llm",
-];
-
-export default async function ContatoPage({
-  searchParams,
-}: {
-  searchParams: Promise<{ servico?: string }>;
-}) {
-  const params = await searchParams;
-  const servico = params?.servico && validServiceIds.includes(params.servico) ? params.servico : undefined;
-
+export default function ContatoPage() {
   return (
     <div className="bg-white dark:bg-graphite">
       <section className="border-b border-graphite/10 dark:border-white/10 bg-light-gray dark:bg-graphite/80 px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
@@ -47,7 +34,9 @@ export default async function ContatoPage({
               <h2 className="text-xl font-bold text-graphite dark:text-white">
                 Formulário
               </h2>
-              <ContactForm defaultService={servico} formEndpoint={contact.formEndpoint} />
+              <Suspense fallback={<div className="mt-6 h-64 animate-pulse rounded-xl bg-graphite/10 dark:bg-white/10" />}>
+                <ContactForm formEndpoint={contact.formEndpoint} />
+              </Suspense>
             </div>
             <div>
               <h2 className="text-xl font-bold text-graphite dark:text-white">

@@ -1,8 +1,14 @@
 "use client";
 
 import { useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { z } from "zod";
 import { contact } from "@/content/contact";
+
+const VALID_SERVICE_IDS = [
+  "mobile", "web", "systems", "data-arch", "data-eng",
+  "analytics", "data-science", "ai", "llm",
+];
 
 const schema = z.object({
   name: z.string().min(2, "Nome deve ter pelo menos 2 caracteres"),
@@ -33,7 +39,13 @@ type ContactFormProps = {
   formEndpoint?: string;
 };
 
-export function ContactForm({ defaultService, formEndpoint: formEndpointProp }: ContactFormProps) {
+export function ContactForm({ defaultService: defaultServiceProp, formEndpoint: formEndpointProp }: ContactFormProps) {
+  const searchParams = useSearchParams();
+  const servicoFromUrl = searchParams.get("servico");
+  const defaultService =
+    defaultServiceProp ??
+    (servicoFromUrl && VALID_SERVICE_IDS.includes(servicoFromUrl) ? servicoFromUrl : undefined);
+
   const [errors, setErrors] = useState<Partial<Record<keyof FormData, string>>>(
     {}
   );
