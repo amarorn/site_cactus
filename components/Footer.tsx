@@ -1,8 +1,8 @@
 import Link from "next/link";
-import Image from "next/image";
 import { company } from "@/content/company";
 import { footerLinks } from "@/content/navigation";
 import { contact } from "@/content/contact";
+import { LogoInline } from "@/components/LogoInline";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -14,13 +14,7 @@ export function Footer() {
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
           <div className="lg:col-span-1">
             <Link href="/" className="inline-block" aria-label="Cactus System">
-              <Image
-                src="/brand/logo-primary.svg"
-                alt="Cactus System"
-                width={220}
-                height={50}
-                className="h-9 w-auto"
-              />
+              <LogoInline light className="h-9" />
             </Link>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-white/80">
               {company.shortDescription}
