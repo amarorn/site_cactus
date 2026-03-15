@@ -11,8 +11,8 @@ O Analytics ajuda a **decidir** onde e como monetizar com ads: quais páginas t�
 
 O foco do site da Cactus é **geração de leads** (formulário, WhatsApp, CTA “Falar com especialistas”). Os eventos configurados no GA (`whatsapp_click`, `form_contact_submit`, `cta_primary_click`) servem para ver o que gera contato e potencial receita via projetos.
 
-## Se no futuro quiser AdSense
+## AdSense no projeto
 
-1. Criar conta e solicitar aprovação no [Google AdSense](https://www.google.com/adsense).
-2. Após aprovação, adicionar o script que o AdSense fornece (por exemplo no layout, como foi feito com o GA).
-3. Usar os relatórios do **Analytics** (páginas mais visitadas, tempo na página, rejeição) para decidir em quais páginas ou blocos de conteúdo exibir anúncios e que tipo de conteúdo produzir para monetizar com ads.
+O script do AdSense já está integrado via componente `GoogleAdSense` no layout. O ID do cliente é lido de `NEXT_PUBLIC_ADSENSE_CLIENT_ID` (ex.: `ca-pub-XXXXXXXXXXXXXXXX`). Se a variável não estiver definida, o script não é carregado.
+
+Para exibir anúncios em páginas específicas, use os blocos de anúncio que o AdSense fornece (código de unidade de anúncio) nos locais desejados. Use os relatórios do **Analytics** (páginas mais visitadas, tempo na página, rejeição) para decidir onde colocar as unidades.
