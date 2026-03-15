@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import { motion } from "framer-motion";
 import { clients } from "@/content/clients";
 
@@ -83,14 +82,13 @@ function ClientLogo({
     >
       {source !== "text" && src ? (
         <div className="flex min-h-[28px] w-full items-center justify-center sm:min-h-[32px]">
-          <Image
+          <img
             src={src}
             alt={client.name}
             width={120}
             height={40}
             className={`h-6 w-auto max-w-[100px] object-contain object-center sm:h-7 sm:max-w-[120px] ${imgClass}`}
             onError={handleError}
-            unoptimized={source === "clearbit"}
           />
         </div>
       ) : (
