@@ -80,7 +80,10 @@ export function ContactForm({ defaultService, formEndpoint: formEndpointProp }: 
       try {
         const res = await fetch(endpoint, {
           method: "POST",
-          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+            Accept: "application/json",
+          },
           body: body.toString(),
         });
         if (res.ok) {
