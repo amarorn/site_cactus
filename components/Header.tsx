@@ -54,6 +54,7 @@ export function Header() {
           muted
           loop
           playsInline
+          preload="metadata"
           className="absolute inset-0 h-full w-full object-cover object-center"
           aria-hidden
         >
@@ -70,7 +71,7 @@ export function Header() {
               key={link.href}
               href={link.href}
               className={cn(
-                "text-sm font-medium transition-colors duration-200 hover:text-primary",
+                "text-sm font-medium transition-colors duration-200 hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-graphite rounded-md px-1 py-0.5",
                 pathname === link.href ? "text-primary" : "text-white/90"
               )}
             >
@@ -83,7 +84,7 @@ export function Header() {
           <ThemeToggle variant="dark-bg" />
           <CTALink
             href="/contato"
-            className="group inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-white btn-primary-cta hover:bg-primary-hover focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+            className="group inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-white btn-primary-cta hover:bg-primary-hover focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-graphite focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-graphite"
           >
             {contact.primaryCTA}
             <ArrowRight className="cta-arrow h-4 w-4" />
@@ -93,13 +94,13 @@ export function Header() {
         <div className="flex items-center gap-2 md:hidden">
           <ThemeToggle variant="dark-bg" />
           <button
-          type="button"
-          className="flex h-10 w-10 items-center justify-center rounded-lg text-white/90 hover:bg-white/10 md:hidden"
-          onClick={() => setMobileOpen(!mobileOpen)}
-          aria-expanded={mobileOpen}
-          aria-controls="mobile-menu"
-          aria-label={mobileOpen ? "Fechar menu" : "Abrir menu"}
-        >
+            type="button"
+            className="flex h-10 w-10 items-center justify-center rounded-lg text-white/90 hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-graphite md:hidden"
+            onClick={() => setMobileOpen(!mobileOpen)}
+            aria-expanded={mobileOpen}
+            aria-controls="mobile-menu"
+            aria-label={mobileOpen ? "Fechar menu" : "Abrir menu"}
+          >
           {mobileOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
         </button>
         </div>
@@ -122,7 +123,7 @@ export function Header() {
                   href={link.href}
                   onClick={() => setMobileOpen(false)}
                   className={cn(
-                    "rounded-lg px-4 py-3 text-sm font-medium transition-colors hover:bg-white/10",
+                    "rounded-lg px-4 py-3 text-sm font-medium transition-colors hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-inset",
                     pathname === link.href ? "text-primary" : "text-white/90"
                   )}
                 >
@@ -132,7 +133,7 @@ export function Header() {
               <CTALink
                 href="/contato"
                 onClick={() => setMobileOpen(false)}
-                className="group mt-2 inline-flex w-full items-center justify-center gap-2 rounded-full bg-primary px-5 py-3 text-sm font-semibold text-white btn-primary-cta hover:bg-primary-hover"
+                className="group mt-2 inline-flex w-full items-center justify-center gap-2 rounded-full bg-primary px-5 py-3 text-sm font-semibold text-white btn-primary-cta hover:bg-primary-hover focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-graphite"
               >
                 {contact.primaryCTA}
                 <ArrowRight className="cta-arrow h-4 w-4" />

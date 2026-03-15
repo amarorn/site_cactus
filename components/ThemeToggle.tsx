@@ -25,7 +25,7 @@ export function ThemeToggle({ variant = "default" }: ThemeToggleProps) {
       type="button"
       onClick={() => setTheme(isDark ? "light" : "dark")}
       className={cn(
-        "flex h-10 w-10 items-center justify-center rounded-lg transition-colors",
+        "flex h-10 w-10 items-center justify-center rounded-lg transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-graphite",
         variant === "dark-bg"
           ? "text-white/90 hover:bg-white/10"
           : "text-graphite hover:bg-graphite/10 dark:text-white dark:hover:bg-white/10"

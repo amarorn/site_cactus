@@ -3,10 +3,14 @@ import dynamic from "next/dynamic";
 import { Poppins } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import { A11yProvider } from "@/components/A11yProvider";
+import { SkipLink } from "@/components/SkipLink";
 import { Header } from "@/components/Header";
 import { JsonLd } from "@/components/JsonLd";
 import { FirebaseInit } from "@/components/FirebaseInit";
 import { ClientOnlyWidgets } from "@/components/ClientOnlyWidgets";
+import { PersonalizationProvider } from "@/components/PersonalizationProvider";
+import { SKIP_TARGET_ID } from "@/components/SkipLink";
 
 const Footer = dynamic(
   () => import("@/components/Footer").then((m) => ({ default: m.Footer })),
@@ -51,11 +55,18 @@ export default function RootLayout({
       <body className={`${poppins.variable} font-sans antialiased`} suppressHydrationWarning>
         <FirebaseInit />
         <ThemeProvider>
-          <ClientOnlyWidgets />
-          <JsonLd />
-          <Header />
-          <main>{children}</main>
-          <Footer />
+          <A11yProvider>
+            <PersonalizationProvider>
+              <SkipLink />
+              <ClientOnlyWidgets />
+              <JsonLd />
+              <Header />
+              <main id={SKIP_TARGET_ID} tabIndex={-1}>
+                {children}
+              </main>
+              <Footer />
+            </PersonalizationProvider>
+          </A11yProvider>
         </ThemeProvider>
       </body>
     </html>

@@ -1,9 +1,12 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { clients } from "@/content/clients";
 
 const LOGOS_BASE = "/logos/clients";
+
+const LOGO_SIZES = "(max-width: 640px) 100px, 120px";
 
 export function ClientStrip() {
   return (
@@ -56,12 +59,15 @@ function ClientLogo({
       className="flex h-12 w-32 shrink-0 items-center justify-center rounded-lg border border-graphite/15 dark:border-white/20 px-4 py-2 transition-shadow hover:shadow-md sm:h-14 sm:w-36"
     >
       {logoSrc ? (
-        <img
+        <Image
           src={logoSrc}
           alt={client.name}
           width={120}
           height={40}
+          sizes={LOGO_SIZES}
+          loading="lazy"
           decoding="async"
+          unoptimized
           className={`h-6 w-auto max-w-[100px] object-contain object-center sm:h-7 sm:max-w-[120px] ${imgClass}`}
         />
       ) : (

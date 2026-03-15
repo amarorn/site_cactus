@@ -1,7 +1,7 @@
 "use client";
 
 type SectionDividerProps = {
-  variant?: "wave" | "organic" | "cactus-curve";
+  variant?: "wave" | "organic" | "cactus-curve" | "blob";
   flip?: boolean;
   className?: string;
 };
@@ -12,6 +12,31 @@ export function SectionDivider({
   className = "",
 }: SectionDividerProps) {
   const transform = flip ? "scaleY(-1)" : undefined;
+
+  if (variant === "blob") {
+    return (
+      <div className={`w-full overflow-hidden ${className}`} aria-hidden>
+        <svg
+          viewBox="0 0 1200 120"
+          preserveAspectRatio="none"
+          className="block h-14 w-full sm:h-20"
+          style={{ transform }}
+        >
+          <path
+            fill="currentColor"
+            className="text-primary"
+            d="M0,80 C200,20 400,100 600,50 C800,0 1000,70 1200,40 L1200,120 L0,120 Z"
+            opacity={0.06}
+          />
+          <path
+            fill="currentColor"
+            d="M0,90 C250,40 450,110 600,60 C750,20 950,80 1200,50 L1200,120 L0,120 Z"
+            opacity={0.04}
+          />
+        </svg>
+      </div>
+    );
+  }
 
   if (variant === "wave") {
     return (

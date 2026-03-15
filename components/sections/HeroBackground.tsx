@@ -1,7 +1,9 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { useParallax } from "@/lib/hooks";
 
 const HERO_VIDEO_SRC = "/videos/hero-background.mp4";
 
@@ -11,6 +13,7 @@ type HeroBackgroundProps = {
 
 export function HeroBackground({ className }: HeroBackgroundProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const parallaxY = useParallax(32, [0, 0.4]);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -53,6 +56,7 @@ export function HeroBackground({ className }: HeroBackgroundProps) {
       <div
         className="absolute inset-0 opacity-[0.06] motion-gradient-shift dark:opacity-[0.05]"
         style={{ background: "var(--gradient-regional)", transformOrigin: "50% 50%" }}
+        aria-hidden
       />
       <div
         className="absolute inset-0 opacity-[0.06] dark:opacity-[0.06] motion-grid"
@@ -68,8 +72,10 @@ export function HeroBackground({ className }: HeroBackgroundProps) {
       <div
         className="absolute -bottom-1/4 -right-1/4 h-[60%] w-[60%] rounded-full bg-primary/8 blur-[100px] dark:bg-primary/8 motion-mesh-delay"
       />
-      <div
+      <motion.div
         className="absolute left-1/2 top-1/2 h-64 w-64 -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/10 blur-[80px] dark:bg-primary/8 motion-float"
+        style={{ y: parallaxY }}
+        aria-hidden
       />
       <div
         className="absolute -right-1/4 top-1/4 h-96 w-96 rounded-[40%_60%_70%_30%/40%_50%_60%_50%] bg-primary/[0.06] blur-[80px] dark:bg-primary/[0.05] motion-blob-morph"

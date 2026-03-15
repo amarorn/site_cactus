@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import dynamic from "next/dynamic";
 import { CaseCard } from "@/components/sections/CaseCard";
 import { HeroBackground } from "@/components/sections/HeroBackground";
 import { cases } from "@/content/cases";
 import { clientNames } from "@/content/clients";
+import { getCaseStudySlugFromClient } from "@/content/case-studies";
 
 const SectionDivider = dynamic(
   () => import("@/components/sections/SectionDivider").then((m) => ({ default: m.SectionDivider })),
@@ -64,16 +66,21 @@ export default function ClientesPage() {
           </h2>
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-2">
             {cases.map((c, i) => (
-              <CaseCard
+              <Link
                 key={c.client}
-                client={c.client}
-                segment={c.segment}
-                challenge={c.challenge}
-                approach={c.approach}
-                solution={c.solution}
-                outcome={c.outcome}
-                index={i}
-              />
+                href={`/cases/${getCaseStudySlugFromClient(c.client)}`}
+                className="block focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded-xl"
+              >
+                <CaseCard
+                  client={c.client}
+                  segment={c.segment}
+                  challenge={c.challenge}
+                  approach={c.approach}
+                  solution={c.solution}
+                  outcome={c.outcome}
+                  index={i}
+                />
+              </Link>
             ))}
           </div>
         </div>

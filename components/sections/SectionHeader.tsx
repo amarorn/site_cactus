@@ -31,7 +31,7 @@ export function SectionHeader({
           <div className="section-accent" />
         </div>
       )}
-      <h2 className="mt-4 text-2xl font-bold tracking-tight text-graphite dark:text-white sm:text-3xl lg:text-4xl balance">
+      <h2 className="mt-4 text-h2 font-bold tracking-tight text-graphite dark:text-white balance">
         {title}
       </h2>
       {subtitle && (

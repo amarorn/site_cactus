@@ -41,22 +41,43 @@ const CTASection = dynamic(
   { ssr: true }
 );
 
+const DynamicTestimonials = dynamic(
+  () => import("@/components/sections/DynamicTestimonials").then((m) => ({ default: m.DynamicTestimonials })),
+  { ssr: true }
+);
+
+const DynamicCaseStudies = dynamic(
+  () => import("@/components/sections/DynamicCaseStudies").then((m) => ({ default: m.DynamicCaseStudies })),
+  { ssr: true }
+);
+
+const FAQSection = dynamic(
+  () => import("@/components/sections/FAQSection").then((m) => ({ default: m.FAQSection })),
+  { ssr: true }
+);
+
 export default function HomePage() {
   return (
     <>
       <HeroSection />
       <ClientStrip />
-      <SectionDivider variant="organic" className="text-white dark:text-graphite" />
+      <SectionDivider variant="blob" className="text-white dark:text-graphite" />
       <ServiceGrid />
-      <SectionDivider variant="cactus-curve" flip className="text-light-gray dark:text-graphite/50" />
+      <SectionDivider variant="blob" flip className="text-light-gray dark:text-graphite/50" />
       <ProcessTimeline />
       <SectionDivider variant="wave" className="text-white dark:text-graphite" />
-      <WhyCactus />
-      <SectionDivider variant="organic" flip className="text-graphite" />
       <TechStack />
+      <SectionDivider variant="organic" flip className="text-graphite" />
+      <DynamicCaseStudies />
+      <SectionDivider variant="wave" className="text-white dark:text-graphite" />
+      <DynamicTestimonials />
+      <SectionDivider variant="organic" flip className="text-graphite" />
+      <WhyCactus />
       <SectionDivider variant="cactus-curve" className="text-white dark:text-graphite" />
       <LocationSection />
       <SectionDivider variant="organic" flip className="text-graphite" />
+      <FAQSection />
+      <SectionDivider variant="wave" className="text-white dark:text-graphite" />
       <CTASection
         title="Pronto para começar?"
         subtitle="Converse com nossa equipe e veja como podemos ajudar no seu próximo projeto."

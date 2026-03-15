@@ -1,34 +1,26 @@
-import { company } from "@/content/company";
-import { contact } from "@/content/contact";
-import { seo } from "@/content/seo";
+import {
+  buildOrganizationSchema,
+  buildProductSchema,
+  buildFAQSchema,
+} from "@/lib/seo/schema";
+import { faqItems } from "@/content/faq";
 
 export function JsonLd() {
-  const schema = {
+  const organization = buildOrganizationSchema();
+  const productList = buildProductSchema();
+  const faq = buildFAQSchema(
+    faqItems.map((item) => ({ question: item.question, answer: item.answer }))
+  );
+
+  const graph = {
     "@context": "https://schema.org",
-    "@type": "ProfessionalService",
-    name: company.name,
-    description: company.shortDescription,
-    url: seo.siteUrl,
-    email: contact.email,
-    address: {
-      "@type": "PostalAddress",
-      addressLocality: company.location.city,
-      addressRegion: company.location.state,
-    },
-    areaServed: "BR",
-    serviceType: [
-      "Desenvolvimento de software",
-      "Engenharia de dados",
-      "Arquitetura de dados",
-      "Analytics",
-      "Inteligência artificial",
-    ],
+    "@graph": [organization, productList, faq],
   };
 
   return (
     <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(graph) }}
     />
   );
 }

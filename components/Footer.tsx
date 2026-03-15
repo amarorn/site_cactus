@@ -10,7 +10,11 @@ export function Footer() {
       <div className="mx-auto max-w-[1280px] px-4 py-16 sm:px-6 lg:px-8">
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
           <div className="lg:col-span-1">
-            <Link href="/" className="inline-block" aria-label="Cactus System">
+            <Link
+              href="/"
+              className="inline-block rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-graphite"
+              aria-label="Cactus System - início"
+            >
               <Image
                 src="/brand/logo-primary.svg"
                 alt="Cactus System"
@@ -33,7 +37,7 @@ export function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm text-white/90 transition-colors hover:text-primary"
+                    className="text-sm text-white/90 transition-colors hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-graphite rounded"
                   >
                     {link.label}
                   </Link>
@@ -51,7 +55,7 @@ export function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm text-white/90 transition-colors hover:text-primary"
+                    className="text-sm text-white/90 transition-colors hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-graphite rounded"
                   >
                     {link.label}
                   </Link>
@@ -68,7 +72,7 @@ export function Footer() {
               <li>
                 <a
                   href={`mailto:${contact.email}`}
-                  className="transition-colors hover:text-primary"
+                  className="transition-colors hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-graphite rounded"
                 >
                   {contact.email}
                 </a>
@@ -79,7 +83,7 @@ export function Footer() {
                     href={`https://wa.me/${contact.whatsapp.replace(/\D/g, "")}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="transition-colors hover:text-primary"
+                    className="transition-colors hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-graphite rounded"
                   >
                     WhatsApp
                   </a>
@@ -99,7 +103,7 @@ export function Footer() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-sm text-white/60 transition-colors hover:text-white/90"
+                className="text-sm text-white/60 transition-colors hover:text-white/90 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-graphite rounded"
               >
                 {link.label}
               </Link>
