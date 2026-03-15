@@ -33,9 +33,10 @@ jobs:
       - name: Build Storybook
         run: npm run build-storybook
 
-  # Chromatic: publica Storybook e roda testes visuais em https://www.chromatic.com (opcional se CHROMATIC_PROJECT_TOKEN nao estiver definido)
+  # Chromatic: publica Storybook em https://www.chromatic.com. So roda se variavel CHROMATIC_ENABLED = true (Settings > Variables) e secret CHROMATIC_PROJECT_TOKEN estiver definido.
   chromatic:
     runs-on: ubuntu-latest
+    if: vars.CHROMATIC_ENABLED == 'true'
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -48,9 +49,7 @@ jobs:
           cache: "npm"
       - name: Install dependencies
         run: npm ci
-      # Token em: Chromatic > Manage app > Configure; GitHub repo > Settings > Secrets > CHROMATIC_PROJECT_TOKEN (job roda sempre; step e ignorado se token vazio)
       - name: Publish to Chromatic
-        if: secrets.CHROMATIC_PROJECT_TOKEN != ''
         uses: chromaui/action@v11
         with:
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
