@@ -516,21 +516,33 @@ html.a11y-font-125 {
   font-size: 125%;
 }
 
-/* A11y widget: high contrast */
+/* A11y widget: high contrast - override theme colors so Tailwind utilities (bg-graphite, text-white, etc.) reflect high contrast */
 .a11y-contrast-high {
   --foreground: #000000;
   --foreground-muted: #333333;
   --background: #ffffff;
   --surface: #ffffff;
-  --border: rgba(0, 0, 0, 0.25);
+  --border: rgba(0, 0, 0, 0.4);
+  --color-graphite: #000000;
+  --color-light-gray: #e8e8e8;
+  --color-white: #ffffff;
+  --color-primary: #0d5c2e;
+  --color-primary-hover: #0a4a24;
+  --color-deep-green: #000000;
 }
 .a11y-contrast-high.dark,
 .dark.a11y-contrast-high {
   --foreground: #ffffff;
   --foreground-muted: #e0e0e0;
-  --background: #0a0a0a;
+  --background: #000000;
   --surface: #1a1a1a;
-  --border: rgba(255, 255, 255, 0.4);
+  --border: rgba(255, 255, 255, 0.5);
+  --color-graphite: #000000;
+  --color-light-gray: #1a1a1a;
+  --color-white: #ffffff;
+  --color-primary: #4ade80;
+  --color-primary-hover: #86efac;
+  --color-deep-green: #0a0a0a;
 }
 
 /* A11y widget: reduce motion (overrides animations/transitions when user toggles in widget) */

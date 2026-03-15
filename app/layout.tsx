@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import dynamic from "next/dynamic";
+import Script from "next/script";
 import { Poppins } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
@@ -52,6 +53,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR" suppressHydrationWarning>
+      <Script
+        id="a11y-apply-inline"
+        strategy="beforeInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `(function(){var k='cactus-a11y';try{var r=localStorage.getItem(k);if(!r)return;var p=JSON.parse(r);var el=document.documentElement;['a11y-font-100','a11y-font-110','a11y-font-125'].forEach(function(c){el.classList.remove(c);});var fs=[100,110,125].indexOf(Number(p.fontScale))>=0?p.fontScale:100;el.classList.add('a11y-font-'+fs);if(p.highContrast)el.classList.add('a11y-contrast-high');else el.classList.remove('a11y-contrast-high');if(p.reduceMotion)el.classList.add('a11y-reduce-motion');else el.classList.remove('a11y-reduce-motion');}catch(e){}})();`,
+        }}
+      />
       <body className={`${poppins.variable} font-sans antialiased`} suppressHydrationWarning>
         <FirebaseInit />
         <ThemeProvider>
