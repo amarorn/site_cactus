@@ -1,10 +1,20 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import { ArrowRight, CheckCircle2, Zap, TrendingUp, Star } from "lucide-react";
 import { CTALink } from "@/components/CTALink";
 import { servicesDetail } from "@/content/servicesDetail";
 import { contact } from "@/content/contact";
 import { HeroBackground } from "@/components/sections/HeroBackground";
+
+const SectionDivider = dynamic(
+  () => import("@/components/sections/SectionDivider").then((m) => ({ default: m.SectionDivider })),
+  { ssr: true }
+);
+const CTASection = dynamic(
+  () => import("@/components/sections/CTASection").then((m) => ({ default: m.CTASection })),
+  { ssr: true }
+);
 
 export const metadata: Metadata = {
   title: "Serviços | Cactus System",
@@ -41,7 +51,7 @@ export default function ServicosPage() {
           </div>
         </div>
       </section>
-
+      <SectionDivider variant="organic" className="text-white dark:text-graphite" />
       <div className="divide-y divide-graphite/10 dark:divide-white/10">
         {servicesDetail.map((service, index) => (
           <section
@@ -147,6 +157,13 @@ export default function ServicosPage() {
           </section>
         ))}
       </div>
+      <SectionDivider variant="cactus-curve" className="text-white dark:text-graphite" />
+      <CTASection
+        title="Pronto para começar?"
+        subtitle="Converse com nossa equipe e veja como podemos ajudar no seu próximo projeto."
+        primaryLabel="Falar com especialistas"
+        secondaryLabel="Ver soluções"
+      />
     </div>
   );
 }

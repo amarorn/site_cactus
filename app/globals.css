@@ -42,6 +42,20 @@
   transform: translateY(0);
 }
 
+/* cards em light mode - sombra e borda no hover para feedback visual */
+.card-light-interactive {
+  transition: box-shadow 0.25s ease, border-color 0.25s ease, transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.card-light-interactive:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.07), 0 0 0 1px rgba(72, 181, 121, 0.15);
+  border-color: rgba(72, 181, 121, 0.2);
+  transform: translateY(-2px);
+}
+.dark .card-light-interactive:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
 /* CTA primario - sombra/brilho no hover */
 .btn-primary-cta {
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
@@ -66,17 +80,23 @@
   transform: translateX(4px);
 }
 
-/* padroes geometricos (mesmo peso no light e no dark) */
+/* padroes geometricos - light mais visivel */
 .bg-pattern-grid {
   background-image: linear-gradient(to right, currentColor 1px, transparent 1px),
     linear-gradient(to bottom, currentColor 1px, transparent 1px);
   background-size: 48px 48px;
+  opacity: 0.12;
+}
+.dark .bg-pattern-grid {
   opacity: 0.08;
 }
 
 .bg-pattern-dots {
   background-image: radial-gradient(circle at 2px 2px, currentColor 1px, transparent 0);
   background-size: 24px 24px;
+  opacity: 0.1;
+}
+.dark .bg-pattern-dots {
   opacity: 0.07;
 }
 
@@ -85,8 +105,21 @@
   opacity: 0.05;
 }
 
-/* profundidade em secoes (mesmo padrao light e dark) */
+/* profundidade em secoes - light mais visivel para interatividade */
 .bg-section-depth {
+  background-image:
+    radial-gradient(
+      ellipse 100% 60% at 70% 20%,
+      rgba(72, 181, 121, 0.14) 0%,
+      transparent 45%
+    ),
+    radial-gradient(
+      ellipse 90% 70% at 20% 90%,
+      rgba(72, 181, 121, 0.08) 0%,
+      transparent 40%
+    );
+}
+.dark .bg-section-depth {
   background-image:
     radial-gradient(
       ellipse 100% 60% at 70% 20%,
@@ -100,8 +133,16 @@
     );
 }
 
-/* vinheta (mesmo padrao light e dark) */
+/* vinheta - light mais suave, dark como antes */
 .bg-section-vignette {
+  background-image: radial-gradient(
+    ellipse 70% 70% at 50% 50%,
+    transparent 50%,
+    rgba(0, 0, 0, 0.06) 90%,
+    rgba(0, 0, 0, 0.1) 100%
+  );
+}
+.dark .bg-section-vignette {
   background-image: radial-gradient(
     ellipse 70% 70% at 50% 50%,
     transparent 40%,
@@ -165,21 +206,31 @@ body {
   background-clip: text;
 }
 
-/* glassmorphism card */
+/* glassmorphism card - light: borda e sombra mais visiveis para interatividade */
 .glass-card {
-  background: rgba(255, 255, 255, 0.65);
+  background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(16px) saturate(160%);
   -webkit-backdrop-filter: blur(16px) saturate(160%);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(40, 40, 40, 0.12);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  transition: box-shadow 0.25s ease, border-color 0.25s ease, transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.glass-card:hover {
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(72, 181, 121, 0.2);
+  border-color: rgba(72, 181, 121, 0.25);
 }
 .dark .glass-card {
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: none;
+}
+.dark .glass-card:hover {
+  box-shadow: 0 8px 32px rgba(72, 181, 121, 0.12);
 }
 
-/* gradient border on hover (via box-shadow) */
+/* gradient border on hover (via box-shadow) - light: glow mais marcado */
 .card-glow:hover {
-  box-shadow: 0 0 0 1.5px var(--color-primary), 0 8px 32px rgba(72, 181, 121, 0.15);
+  box-shadow: 0 0 0 1.5px var(--color-primary), 0 12px 36px rgba(72, 181, 121, 0.2), 0 4px 12px rgba(0, 0, 0, 0.06);
 }
 .dark .card-glow:hover {
   box-shadow: 0 0 0 1.5px var(--color-primary), 0 8px 32px rgba(72, 181, 121, 0.12);

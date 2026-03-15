@@ -81,7 +81,7 @@ export function WhyCactus() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-30px" }}
               transition={{ duration: 0.4, delay: i * 0.05 }}
-              className="group flex gap-4 rounded-xl border border-graphite/10 dark:border-white/10 bg-white dark:bg-white/5 p-6 hover-lift hover:border-primary/20"
+              className="group flex gap-4 rounded-xl border border-graphite/10 dark:border-white/10 bg-white dark:bg-white/5 p-6 card-light-interactive hover:border-primary/20 dark:hover:border-white/15"
             >
               <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary transition-colors duration-300 group-hover:bg-primary group-hover:text-white">
                 <item.icon className="h-6 w-6" />

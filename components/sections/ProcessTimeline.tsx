@@ -65,7 +65,7 @@ export function ProcessTimeline() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.5, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
-              className="relative flex gap-8 border-l-2 border-primary/30 pl-8 pb-12 last:pb-0"
+              className="relative flex gap-8 border-l-2 border-primary/30 pl-8 pr-4 pb-12 last:pb-0 -mr-4 rounded-r-lg transition-colors duration-200 hover:bg-white/60 dark:hover:bg-white/5"
             >
               <motion.div
                 initial={{ scale: 0 }}

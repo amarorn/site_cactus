@@ -1,10 +1,17 @@
 import type { Metadata } from "next";
-import { ArrowRight } from "lucide-react";
-import { CTALink } from "@/components/CTALink";
+import dynamic from "next/dynamic";
 import { HeroBackground } from "@/components/sections/HeroBackground";
 import { about } from "@/content/about";
 import { company } from "@/content/company";
-import { contact } from "@/content/contact";
+
+const SectionDivider = dynamic(
+  () => import("@/components/sections/SectionDivider").then((m) => ({ default: m.SectionDivider })),
+  { ssr: true }
+);
+const CTASection = dynamic(
+  () => import("@/components/sections/CTASection").then((m) => ({ default: m.CTASection })),
+  { ssr: true }
+);
 
 export const metadata: Metadata = {
   title: "Sobre a Cactus | Cactus System",
@@ -29,8 +36,8 @@ export default function SobrePage() {
           </p>
         </div>
       </section>
-
-      <section className="px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
+      <SectionDivider variant="organic" className="text-white dark:text-graphite" />
+      <section className="px-4 py-16 sm:px-6 sm:py-20 lg:px-8 bg-white dark:bg-graphite">
         <div className="mx-auto max-w-[1280px]">
           <div className="grid gap-16 lg:grid-cols-2">
             <div>
@@ -48,8 +55,8 @@ export default function SobrePage() {
           </div>
         </div>
       </section>
-
-      <section className="border-t border-graphite/10 dark:border-white/10 bg-light-gray dark:bg-graphite/50 px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
+      <SectionDivider variant="cactus-curve" flip className="text-light-gray dark:text-graphite/50" />
+      <section className="bg-light-gray dark:bg-graphite/50 px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
         <div className="mx-auto max-w-[1280px]">
           <h2 className="text-xl font-bold text-graphite dark:text-white">
             Princípios de trabalho
@@ -58,7 +65,7 @@ export default function SobrePage() {
             {about.principles.map((p) => (
               <div
                 key={p.title}
-                className="rounded-xl border border-graphite/10 dark:border-white/10 bg-white dark:bg-white/5 p-6"
+                className="rounded-xl border border-graphite/10 dark:border-white/10 bg-white dark:bg-white/5 p-6 card-light-interactive"
               >
                 <h3 className="font-semibold text-graphite dark:text-white">{p.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-graphite/80 dark:text-white/80">
@@ -69,7 +76,7 @@ export default function SobrePage() {
           </div>
         </div>
       </section>
-
+      <SectionDivider variant="wave" className="text-white dark:text-graphite" />
       <section className="px-4 py-16 sm:px-6 sm:py-20 lg:px-8 bg-white dark:bg-graphite">
         <div className="mx-auto max-w-[1280px]">
           <h2 className="text-xl font-bold text-graphite dark:text-white">
@@ -91,19 +98,12 @@ export default function SobrePage() {
           </div>
         </div>
       </section>
-
-      <section className="border-t border-graphite/10 dark:border-white/10 bg-graphite px-4 py-16 sm:px-6 sm:py-20 lg:px-8 text-white">
-        <div className="mx-auto max-w-[1280px] text-center">
-          <p className="text-lg font-medium">Quer conhecer melhor?</p>
-          <CTALink
-            href="/contato"
-            className="group mt-4 inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 font-semibold text-white btn-primary-cta hover:bg-primary-hover"
-          >
-            {contact.primaryCTA}
-            <ArrowRight className="cta-arrow h-4 w-4" />
-          </CTALink>
-        </div>
-      </section>
+      <SectionDivider variant="organic" flip className="text-white dark:text-graphite" />
+      <CTASection
+        title="Quer conhecer melhor?"
+        subtitle="Converse com nossa equipe e veja como podemos ajudar no seu próximo projeto."
+        primaryLabel="Falar com especialistas"
+      />
     </div>
   );
 }

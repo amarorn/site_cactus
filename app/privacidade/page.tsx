@@ -1,6 +1,12 @@
 import type { Metadata } from "next";
+import dynamic from "next/dynamic";
 import { HeroBackground } from "@/components/sections/HeroBackground";
 import { privacy } from "@/content/privacy";
+
+const SectionDivider = dynamic(
+  () => import("@/components/sections/SectionDivider").then((m) => ({ default: m.SectionDivider })),
+  { ssr: true }
+);
 
 export const metadata: Metadata = {
   title: "Política de Privacidade | Cactus System",
@@ -25,7 +31,7 @@ export default function PrivacidadePage() {
           </p>
         </div>
       </section>
-
+      <SectionDivider variant="organic" className="text-white dark:text-graphite" />
       <section className="px-4 py-16 sm:px-6 sm:py-20 lg:px-8 bg-white dark:bg-graphite">
         <div className="mx-auto max-w-[720px]">
           <div className="prose prose-graphite space-y-12">

@@ -1,8 +1,18 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import { ArrowRight } from "lucide-react";
 import { HeroBackground } from "@/components/sections/HeroBackground";
 import { solutions } from "@/content/solutions";
+
+const SectionDivider = dynamic(
+  () => import("@/components/sections/SectionDivider").then((m) => ({ default: m.SectionDivider })),
+  { ssr: true }
+);
+const CTASection = dynamic(
+  () => import("@/components/sections/CTASection").then((m) => ({ default: m.CTASection })),
+  { ssr: true }
+);
 
 export const metadata: Metadata = {
   title: "Soluções e Capacidades | Cactus System",
@@ -28,7 +38,7 @@ export default function SolucoesPage() {
           </p>
         </div>
       </section>
-
+      <SectionDivider variant="organic" className="text-white dark:text-graphite" />
       <section className="px-4 py-16 sm:px-6 sm:py-20 lg:px-8 bg-white dark:bg-graphite">
         <div className="mx-auto max-w-[1280px]">
           <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-2">
@@ -36,7 +46,7 @@ export default function SolucoesPage() {
               <article
                 key={sol.id}
                 id={sol.id}
-                className="group rounded-xl border border-graphite/10 dark:border-white/10 bg-white dark:bg-white/5 p-6 shadow-sm transition-all hover:border-primary/30 hover:shadow-md"
+                className="group rounded-xl border border-graphite/10 dark:border-white/10 bg-white dark:bg-white/5 p-6 shadow-sm card-light-interactive hover:border-primary/30"
               >
                 <h2 className="text-xl font-bold text-graphite dark:text-white">{sol.title}</h2>
                 <p className="mt-3 text-sm leading-relaxed text-graphite/80 dark:text-white/80">
@@ -64,6 +74,13 @@ export default function SolucoesPage() {
           </div>
         </div>
       </section>
+      <SectionDivider variant="cactus-curve" flip className="text-white dark:text-graphite" />
+      <CTASection
+        title="Pronto para começar?"
+        subtitle="Converse com nossa equipe e veja como podemos ajudar no seu próximo projeto."
+        primaryLabel="Falar com especialistas"
+        secondaryLabel="Ver serviços"
+      />
     </div>
   );
 }

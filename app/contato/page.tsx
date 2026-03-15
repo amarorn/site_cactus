@@ -1,9 +1,15 @@
 import type { Metadata } from "next";
+import dynamic from "next/dynamic";
 import { Suspense } from "react";
 import { ContactForm } from "@/components/ContactForm";
 import { HeroBackground } from "@/components/sections/HeroBackground";
 import { contact } from "@/content/contact";
 import { company } from "@/content/company";
+
+const SectionDivider = dynamic(
+  () => import("@/components/sections/SectionDivider").then((m) => ({ default: m.SectionDivider })),
+  { ssr: true }
+);
 
 export const metadata: Metadata = {
   title: "Contato | Cactus System",
@@ -28,7 +34,7 @@ export default function ContatoPage() {
           </p>
         </div>
       </section>
-
+      <SectionDivider variant="organic" className="text-white dark:text-graphite" />
       <section className="px-4 py-16 sm:px-6 sm:py-20 lg:px-8 bg-white dark:bg-graphite">
         <div className="mx-auto max-w-[1280px]">
           <div className="grid gap-12 lg:grid-cols-2">

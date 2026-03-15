@@ -1,11 +1,18 @@
 import type { Metadata } from "next";
-import { ArrowRight } from "lucide-react";
-import { CTALink } from "@/components/CTALink";
+import dynamic from "next/dynamic";
 import { CaseCard } from "@/components/sections/CaseCard";
 import { HeroBackground } from "@/components/sections/HeroBackground";
 import { cases } from "@/content/cases";
 import { clientNames } from "@/content/clients";
-import { contact } from "@/content/contact";
+
+const SectionDivider = dynamic(
+  () => import("@/components/sections/SectionDivider").then((m) => ({ default: m.SectionDivider })),
+  { ssr: true }
+);
+const CTASection = dynamic(
+  () => import("@/components/sections/CTASection").then((m) => ({ default: m.CTASection })),
+  { ssr: true }
+);
 
 export const metadata: Metadata = {
   title: "Clientes e Cases | Cactus System",
@@ -31,7 +38,7 @@ export default function ClientesPage() {
           </p>
         </div>
       </section>
-
+      <SectionDivider variant="organic" className="text-white dark:text-graphite" />
       <section className="px-4 py-16 sm:px-6 sm:py-20 lg:px-8 bg-white dark:bg-graphite">
         <div className="mx-auto max-w-[1280px]">
           <h2 className="text-lg font-semibold uppercase tracking-wider text-graphite/70 dark:text-white/70">
@@ -49,8 +56,8 @@ export default function ClientesPage() {
           </div>
         </div>
       </section>
-
-      <section className="border-t border-graphite/10 dark:border-white/10 bg-white dark:bg-graphite px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
+      <SectionDivider variant="wave" className="text-white dark:text-graphite" />
+      <section className="bg-white dark:bg-graphite px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
         <div className="mx-auto max-w-[1280px]">
           <h2 className="text-lg font-semibold uppercase tracking-wider text-graphite/70 dark:text-white/70">
             Cases e experiências
@@ -71,21 +78,12 @@ export default function ClientesPage() {
           </div>
         </div>
       </section>
-
-      <section className="border-t border-graphite/10 dark:border-white/10 bg-light-gray dark:bg-graphite/80 px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
-        <div className="mx-auto max-w-[1280px] text-center">
-          <p className="text-base text-graphite/80 dark:text-white/80">
-            Quer fazer parte dessa lista? Fale conosco.
-          </p>
-          <CTALink
-            href="/contato"
-            className="group mt-4 inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 font-semibold text-white btn-primary-cta hover:bg-primary-hover"
-          >
-            {contact.primaryCTA}
-            <ArrowRight className="cta-arrow h-4 w-4" />
-          </CTALink>
-        </div>
-      </section>
+      <SectionDivider variant="organic" flip className="text-graphite" />
+      <CTASection
+        title="Quer fazer parte dessa lista?"
+        subtitle="Fale conosco e veja como podemos ajudar no seu próximo projeto."
+        primaryLabel="Falar com especialistas"
+      />
     </div>
   );
 }

@@ -27,7 +27,7 @@ export function CaseCard({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.4, delay: index * 0.05 }}
-      className="rounded-xl border border-graphite/10 dark:border-white/10 bg-white dark:bg-white/5 p-6 shadow-sm"
+      className="rounded-xl border border-graphite/10 dark:border-white/10 bg-white dark:bg-white/5 p-6 shadow-sm card-light-interactive"
     >
       <div className="flex flex-wrap items-center gap-2">
         <h3 className="font-semibold text-graphite dark:text-white">{client}</h3>
