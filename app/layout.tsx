@@ -1,13 +1,20 @@
 import type { Metadata } from "next";
+import dynamic from "next/dynamic";
 import { Poppins } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { JsonLd } from "@/components/JsonLd";
-import { CustomCursor } from "@/components/CustomCursor";
-import { WhatsAppFab } from "@/components/WhatsAppFab";
 import { GoogleAnalytics } from "@/components/GoogleAnalytics";
+
+const CustomCursor = dynamic(() => import("@/components/CustomCursor").then((m) => ({ default: m.CustomCursor })), {
+  ssr: false,
+});
+
+const WhatsAppFab = dynamic(() => import("@/components/WhatsAppFab").then((m) => ({ default: m.WhatsAppFab })), {
+  ssr: false,
+});
 
 const poppins = Poppins({
   variable: "--font-poppins",

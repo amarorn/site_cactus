@@ -27,7 +27,7 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
-              className="mt-4 text-3xl font-bold tracking-tight text-graphite dark:text-white sm:text-4xl md:text-5xl lg:text-6xl balance"
+              className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl lg:text-6xl balance text-gradient-animated"
             >
               {company.tagline}
             </motion.h1>
@@ -59,10 +59,11 @@ export function HeroSection() {
               <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
                 <Link
                   href="/servicos"
-                className="inline-flex items-center justify-center rounded-full border-2 border-graphite px-6 py-3.5 font-semibold text-graphite transition-all duration-200 hover:bg-graphite/5 hover:border-graphite/30 focus:outline-none focus:ring-2 focus:ring-graphite focus:ring-offset-2 dark:border-white/30 dark:text-white dark:hover:bg-white/10 dark:focus:ring-white dark:focus:ring-offset-graphite"
-              >
-                Ver serviços
-              </Link>
+                  className="inline-flex items-center justify-center gap-2 rounded-full border-2 border-primary/40 px-6 py-3.5 font-semibold text-primary transition-all duration-300 hover:border-primary hover:bg-primary/5 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:border-primary/40 dark:text-primary dark:hover:bg-primary/10 dark:focus:ring-offset-graphite"
+                >
+                  Ver serviços
+                  <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                </Link>
               </motion.div>
             </motion.div>
           </div>

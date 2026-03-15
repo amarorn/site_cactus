@@ -131,6 +131,52 @@ body {
   text-wrap: balance;
 }
 
+/* gradient text */
+.text-gradient {
+  background: linear-gradient(135deg, var(--color-primary) 0%, #2db87a 40%, var(--color-primary-hover) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* glassmorphism card */
+.glass-card {
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+.dark .glass-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* gradient border on hover (via box-shadow) */
+.card-glow:hover {
+  box-shadow: 0 0 0 1.5px var(--color-primary), 0 8px 32px rgba(72, 181, 121, 0.15);
+}
+.dark .card-glow:hover {
+  box-shadow: 0 0 0 1.5px var(--color-primary), 0 8px 32px rgba(72, 181, 121, 0.12);
+}
+
+/* animated gradient shimmer */
+@keyframes shimmer-move {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+.text-gradient-animated {
+  background: linear-gradient(135deg, var(--color-primary) 0%, #7ddba8 40%, var(--color-primary-hover) 60%, var(--color-primary) 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .text-gradient-animated {
+    animation: shimmer-move 6s linear infinite;
+  }
+}
+
 @keyframes grid-drift {
   0%, 100% { background-position: 0 0; }
   50% { background-position: 64px 64px; }

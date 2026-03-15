@@ -31,20 +31,20 @@ export function ServiceGrid() {
               >
                 <Link
                   href={`/servicos#${service.id}`}
-                  className="group flex h-full flex-col rounded-2xl border border-graphite/10 dark:border-white/10 bg-white dark:bg-white/5 p-6 shadow-sm hover-lift hover:border-primary/30 hover:shadow-xl hover:shadow-primary/10 dark:hover:shadow-primary/5"
+                  className="group flex h-full flex-col rounded-2xl glass-card card-glow p-6 shadow-sm hover-lift transition-all duration-300"
                 >
-                  <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 text-primary transition-colors duration-300 group-hover:bg-primary group-hover:text-white">
+                  <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary transition-all duration-300 group-hover:bg-primary group-hover:text-white group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-primary/30">
                     <Icon className="h-6 w-6" />
                   </div>
                   <h3 className="text-lg font-semibold text-graphite dark:text-white">
                     {service.title}
                   </h3>
-                  <p className="mt-2 flex-1 text-sm leading-relaxed text-graphite/80 dark:text-white/80">
+                  <p className="mt-2 flex-1 text-sm leading-relaxed text-graphite/70 dark:text-white/70">
                     {service.description}
                   </p>
-                  <span className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-primary group-hover:gap-2">
+                  <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-primary transition-all duration-300 group-hover:gap-3">
                     Saiba mais
-                    <ArrowRight className="h-4 w-4 transition-all" />
+                    <ArrowRight className="h-4 w-4 transition-transform duration-300" />
                   </span>
                 </Link>
               </motion.div>
