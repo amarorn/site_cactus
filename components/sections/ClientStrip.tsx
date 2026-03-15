@@ -6,6 +6,27 @@ import { motion } from "framer-motion";
 import { clients } from "@/content/clients";
 
 const LOGO_BASE = "https://logo.clearbit.com";
+const LOCAL_BASE = "/logos/clients";
+
+type LogoSource = "localPng" | "localSvg" | "clearbit" | "text";
+
+function getLogoSrc(
+  source: LogoSource,
+  slug: string,
+  domain: string
+): string | null {
+  if (source === "localPng") return `${LOCAL_BASE}/${slug}.png`;
+  if (source === "localSvg") return `${LOCAL_BASE}/${slug}.svg`;
+  if (source === "clearbit") return `${LOGO_BASE}/${domain}`;
+  return null;
+}
+
+function nextSource(source: LogoSource): LogoSource {
+  if (source === "localPng") return "localSvg";
+  if (source === "localSvg") return "clearbit";
+  if (source === "clearbit") return "text";
+  return "text";
+}
 
 export function ClientStrip() {
   return (
@@ -41,8 +62,15 @@ function ClientLogo({
   client: (typeof clients)[number];
   index: number;
 }) {
-  const [logoError, setLogoError] = useState(false);
-  const logoUrl = `${LOGO_BASE}/${client.domain}`;
+  const [source, setSource] = useState<LogoSource>("localPng");
+  const src = getLogoSrc(source, client.slug, client.domain);
+
+  const handleError = () => {
+    setSource((prev) => nextSource(prev));
+  };
+
+  const theme = client.logoTheme ?? null;
+  const imgClass = theme === "light" ? "invert dark:invert-0" : "";
 
   return (
     <motion.div
@@ -53,16 +81,18 @@ function ClientLogo({
       whileHover={{ scale: 1.05, y: -2 }}
       className="flex h-12 w-32 shrink-0 items-center justify-center rounded-lg border border-graphite/15 dark:border-white/20 bg-white dark:bg-white/5 px-4 py-2 shadow-sm transition-shadow hover:shadow-md sm:h-14 sm:w-36"
     >
-      {!logoError ? (
-        <Image
-          src={logoUrl}
-          alt={client.name}
-          width={120}
-          height={40}
-          className="h-6 w-auto max-w-[100px] object-contain object-center sm:h-7 sm:max-w-[120px]"
-          onError={() => setLogoError(true)}
-          unoptimized
-        />
+      {source !== "text" && src ? (
+        <div className="flex min-h-[28px] w-full items-center justify-center sm:min-h-[32px]">
+          <Image
+            src={src}
+            alt={client.name}
+            width={120}
+            height={40}
+            className={`h-6 w-auto max-w-[100px] object-contain object-center sm:h-7 sm:max-w-[120px] ${imgClass}`}
+            onError={handleError}
+            unoptimized={source === "clearbit"}
+          />
+        </div>
       ) : (
         <span className="text-center text-sm font-medium text-graphite dark:text-white/90">
           {client.name}
