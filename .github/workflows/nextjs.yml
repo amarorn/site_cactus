@@ -33,29 +33,6 @@ jobs:
       - name: Build Storybook
         run: npm run build-storybook
 
-  # Chromatic: publica Storybook e testes visuais em https://www.chromatic.com
-  # Ativar: Settings > Variables > CHROMATIC_ENABLED = true; Secrets > CHROMATIC_PROJECT_TOKEN (token em Chromatic > Manage > Configure)
-  # Ref: https://www.chromatic.com/docs/github-actions/
-  chromatic:
-    runs-on: ubuntu-latest
-    if: vars.CHROMATIC_ENABLED == 'true'
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v5
-        with:
-          fetch-depth: 0
-      - uses: actions/setup-node@v6
-        with:
-          node-version: "24.14.0"
-          cache: "npm"
-      - name: Install dependencies
-        run: npm ci
-      - name: Run Chromatic
-        uses: chromaui/action@latest
-        with:
-          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
-          exitZeroOnChanges: true
-
   # Build job (Next.js). Env vem de Secrets; so NEXT_PUBLIC_* entram no bundle (site estatico).
   build:
     runs-on: ubuntu-latest
