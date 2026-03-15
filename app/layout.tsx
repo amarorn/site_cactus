@@ -8,7 +8,6 @@ import { JsonLd } from "@/components/JsonLd";
 import { CustomCursor } from "@/components/CustomCursor";
 import { WhatsAppFab } from "@/components/WhatsAppFab";
 import { GoogleAnalytics } from "@/components/GoogleAnalytics";
-import { GoogleAdSense } from "@/components/GoogleAdSense";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -38,8 +37,6 @@ export const metadata: Metadata = {
   }),
 };
 
-const ADSENSE_CLIENT_ID = process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID?.trim() || "";
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -47,14 +44,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR" suppressHydrationWarning>
-      <head>
-        {ADSENSE_CLIENT_ID && (
-          <meta name="google-adsense-account" content={ADSENSE_CLIENT_ID} />
-        )}
-      </head>
       <body className={`${poppins.variable} font-sans antialiased`} suppressHydrationWarning>
         <GoogleAnalytics />
-        <GoogleAdSense />
         <ThemeProvider>
           <CustomCursor />
           <WhatsAppFab />
