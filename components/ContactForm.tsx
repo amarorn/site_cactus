@@ -30,7 +30,11 @@ function SubmitButton() {
   );
 }
 
-export function ContactForm() {
+type ContactFormProps = {
+  defaultService?: string;
+};
+
+export function ContactForm({ defaultService }: ContactFormProps) {
   const [errors, setErrors] = useState<Partial<Record<keyof FormData, string>>>(
     {}
   );
@@ -72,7 +76,8 @@ export function ContactForm() {
       });
       const res = await fetch(contact.formEndpoint, {
         method: "POST",
-        body,
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: body.toString(),
       });
       if (res.ok) {
         setStatus("success");
@@ -103,7 +108,7 @@ export function ContactForm() {
     return (
       <div className="rounded-xl border border-primary/30 bg-primary/5 dark:bg-primary/10 p-6">
         <p className="font-medium text-graphite dark:text-white">
-          Mensagem enviada com sucesso. Em breve entraremos em contato.
+          Mensagem enviada com sucesso. Responderemos em até 24h úteis.
         </p>
       </div>
     );
@@ -186,6 +191,7 @@ export function ContactForm() {
         <select
           id="service"
           name="service"
+          defaultValue={defaultService ?? ""}
           className="mt-1 w-full rounded-lg border border-graphite/20 dark:border-white/20 bg-white dark:bg-white/5 px-4 py-2.5 text-graphite dark:text-white focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
         >
           <option value="">Selecione</option>

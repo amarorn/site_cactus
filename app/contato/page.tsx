@@ -9,7 +9,19 @@ export const metadata: Metadata = {
     "Entre em contato com a Cactus System. Desenvolvimento de software, dados e IA.",
 };
 
-export default function ContatoPage() {
+const validServiceIds = [
+  "mobile", "web", "systems", "data-arch", "data-eng",
+  "analytics", "data-science", "ai", "llm",
+];
+
+export default async function ContatoPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ servico?: string }>;
+}) {
+  const params = await searchParams;
+  const servico = params?.servico && validServiceIds.includes(params.servico) ? params.servico : undefined;
+
   return (
     <div className="bg-white dark:bg-graphite">
       <section className="border-b border-graphite/10 dark:border-white/10 bg-light-gray dark:bg-graphite/80 px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
@@ -21,8 +33,7 @@ export default function ContatoPage() {
             Fale conosco
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-graphite/80 dark:text-white/80">
-            Conte sobre seu projeto ou dúvida. Responderemos o mais breve
-            possível.
+            Conte sobre seu projeto ou dúvida. Responderemos em até 24h úteis.
           </p>
         </div>
       </section>
@@ -34,7 +45,7 @@ export default function ContatoPage() {
               <h2 className="text-xl font-bold text-graphite dark:text-white">
                 Formulário
               </h2>
-              <ContactForm />
+              <ContactForm defaultService={servico} />
             </div>
             <div>
               <h2 className="text-xl font-bold text-graphite dark:text-white">

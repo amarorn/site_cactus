@@ -45,7 +45,7 @@ export default function ServicosPage() {
                     {service.overview}
                   </p>
                   <Link
-                    href="/contato"
+                    href={`/contato?servico=${service.id}`}
                     className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-primary hover:gap-3"
                   >
                     {contact.primaryCTA}

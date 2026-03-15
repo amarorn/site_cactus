@@ -59,5 +59,10 @@ Centralize alterações em:
 - [ ] Grafia de clientes em `content/clients.ts`
 - [ ] Contatos oficiais em `content/contact.ts` (WhatsApp, telefone, endereço)
 - [ ] URL em `content/seo.ts` para produção
-- [ ] Integração do formulário de contato com serviço de e-mail (ver `app/contato/actions.ts`)
+- [ ] Formulário de contato: em `content/contact.ts` defina `formEndpoint` com a URL do Formspree (ex: `https://formspree.io/f/xyzabc`) para receber leads por e-mail; se vazio, o envio abre o cliente de e-mail.
 - [ ] Links de redes sociais em `content/seo.ts` se houver
+
+## Geração de leads
+
+- Links para `/contato?servico=<id>` pré-preenchem o campo "Serviço de interesse" (ex: `/contato?servico=data-arch`).
+- A página de serviços usa esse parâmetro em cada CTA; assim você sabe qual serviço gerou o lead.
