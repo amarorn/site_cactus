@@ -45,7 +45,7 @@ export default async function ContatoPage({
               <h2 className="text-xl font-bold text-graphite dark:text-white">
                 Formulário
               </h2>
-              <ContactForm defaultService={servico} />
+              <ContactForm defaultService={servico} formEndpoint={contact.formEndpoint} />
             </div>
             <div>
               <h2 className="text-xl font-bold text-graphite dark:text-white">

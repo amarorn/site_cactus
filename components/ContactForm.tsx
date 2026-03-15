@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { useFormStatus } from "react-dom";
 import { z } from "zod";
 import { contact } from "@/content/contact";
 
@@ -17,33 +16,35 @@ const schema = z.object({
 
 type FormData = z.infer<typeof schema>;
 
-function SubmitButton() {
-  const { pending } = useFormStatus();
+function SubmitButton({ isSubmitting }: { isSubmitting: boolean }) {
   return (
     <button
       type="submit"
-      disabled={pending}
+      disabled={isSubmitting}
       className="group inline-flex items-center justify-center gap-2 rounded-full bg-primary px-6 py-3 font-semibold text-white btn-primary-cta hover:bg-primary-hover disabled:opacity-70 disabled:hover:transform-none disabled:hover:shadow-none"
     >
-      {pending ? "Enviando..." : "Enviar"}
+      {isSubmitting ? "Enviando..." : "Enviar"}
     </button>
   );
 }
 
 type ContactFormProps = {
   defaultService?: string;
+  formEndpoint?: string;
 };
 
-export function ContactForm({ defaultService }: ContactFormProps) {
+export function ContactForm({ defaultService, formEndpoint: formEndpointProp }: ContactFormProps) {
   const [errors, setErrors] = useState<Partial<Record<keyof FormData, string>>>(
     {}
   );
   const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   async function handleSubmit(formData: unknown) {
     if (!(formData instanceof FormData)) return;
     setErrors({});
     setStatus("idle");
+    setIsSubmitting(true);
 
     const raw = {
       name: formData.get("name") as string,
@@ -66,24 +67,31 @@ export function ContactForm({ defaultService }: ContactFormProps) {
         }
       }
       setErrors(fieldErrors);
+      setIsSubmitting(false);
       return;
     }
 
-    if (contact.formEndpoint) {
+    const endpoint = (formEndpointProp ?? contact.formEndpoint ?? "").trim();
+    if (endpoint) {
       const body = new URLSearchParams();
       Object.entries(result.data).forEach(([k, v]) => {
         if (v != null && v !== "") body.append(k, String(v));
       });
-      const res = await fetch(contact.formEndpoint, {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: body.toString(),
-      });
-      if (res.ok) {
-        setStatus("success");
-      } else {
+      try {
+        const res = await fetch(endpoint, {
+          method: "POST",
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body: body.toString(),
+        });
+        if (res.ok) {
+          setStatus("success");
+        } else {
+          setStatus("error");
+        }
+      } catch {
         setStatus("error");
       }
+      setIsSubmitting(false);
     } else {
       const params = new URLSearchParams({
         subject: `Contato Cactus: ${result.data.name}`,
@@ -101,6 +109,7 @@ export function ContactForm({ defaultService }: ContactFormProps) {
       });
       window.location.href = `mailto:${contact.email}?${params.toString()}`;
       setStatus("success");
+      setIsSubmitting(false);
     }
   }
 
@@ -115,7 +124,13 @@ export function ContactForm({ defaultService }: ContactFormProps) {
   }
 
   return (
-    <form action={handleSubmit} className="mt-6 space-y-4">
+    <form
+      className="mt-6 space-y-4"
+      onSubmit={async (e) => {
+        e.preventDefault();
+        await handleSubmit(new FormData(e.currentTarget));
+      }}
+    >
       <input
         type="text"
         name="honeypot"
@@ -234,7 +249,7 @@ export function ContactForm({ defaultService }: ContactFormProps) {
           Ocorreu um erro ao enviar. Tente novamente ou use o e-mail diretamente.
         </p>
       )}
-      <SubmitButton />
+      <SubmitButton isSubmitting={isSubmitting} />
     </form>
   );
 }

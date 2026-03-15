@@ -3,7 +3,7 @@
 // Se formEndpoint estiver vazio, o botão Enviar abre o cliente de e-mail.
 export const contact = {
   primaryCTA: "Falar com especialistas",
-  email: "contato@cactussystem.com.br",
+  email: "j.amarorn@gmail.com",
   phone: "" as string,
   whatsapp: "" as string,
   address: "" as string,
