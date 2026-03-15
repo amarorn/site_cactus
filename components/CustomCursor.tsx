@@ -69,7 +69,7 @@ export function CustomCursor() {
         transition={{ type: "spring", stiffness: 400, damping: 25 }}
       />
       <motion.div
-        className="absolute left-0 top-0 h-8 w-8 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-primary/70"
+        className="absolute left-0 top-0 h-8 w-8 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-graphite/35 dark:border-primary/70"
         animate={{
           scale: hover ? 1.8 : 1,
           opacity: hover ? 0.9 : 0.6,

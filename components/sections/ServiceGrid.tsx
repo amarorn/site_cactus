@@ -10,7 +10,7 @@ import { SectionHeader } from "./SectionHeader";
 
 export function ServiceGrid() {
   return (
-    <section className="relative overflow-hidden py-24 sm:py-32 bg-white dark:bg-graphite">
+    <section className="relative overflow-hidden py-24 sm:py-32 bg-[var(--background)] dark:bg-graphite">
       <div className="pointer-events-none absolute inset-0 text-graphite dark:text-white bg-pattern-grid" aria-hidden />
       <div className="relative mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-8">
         <SectionHeader
@@ -31,7 +31,7 @@ export function ServiceGrid() {
               >
                 <Link
                   href={`/servicos#${service.id}`}
-                  className="group flex h-full flex-col rounded-2xl border border-graphite/10 dark:border-white/10 bg-white/90 dark:bg-white/5 p-6 shadow-sm backdrop-blur-sm hover-lift hover:border-primary/30 hover:shadow-xl hover:shadow-primary/10 dark:hover:shadow-primary/5"
+                  className="group flex h-full flex-col rounded-2xl border border-graphite/10 dark:border-white/10 bg-white dark:bg-white/5 p-6 shadow-sm hover-lift hover:border-primary/30 hover:shadow-xl hover:shadow-primary/10 dark:hover:shadow-primary/5"
                 >
                   <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 text-primary transition-colors duration-300 group-hover:bg-primary group-hover:text-white">
                     <Icon className="h-6 w-6" />

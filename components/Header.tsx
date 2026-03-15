@@ -26,7 +26,7 @@ export function Header() {
     <header
       className={cn(
         "sticky top-0 z-50 w-full border-b border-graphite/10 dark:border-white/10 transition-all duration-300",
-        "bg-white/80 dark:bg-graphite/90 backdrop-blur-md supports-[backdrop-filter]:bg-white/70 dark:supports-[backdrop-filter]:bg-graphite/80",
+        "bg-[var(--background)]/95 dark:bg-graphite/90 backdrop-blur-md supports-[backdrop-filter]:bg-[var(--background)]/90 dark:supports-[backdrop-filter]:bg-graphite/80",
         scrolled && "shadow-sm dark:shadow-black/20"
       )}
     >
@@ -82,7 +82,7 @@ export function Header() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.2 }}
-            className="overflow-hidden border-t border-graphite/10 dark:border-white/10 bg-white dark:bg-graphite md:hidden"
+            className="overflow-hidden border-t border-graphite/10 dark:border-white/10 bg-[var(--background)] dark:bg-graphite md:hidden"
           >
             <nav className="flex flex-col gap-1 px-4 py-4" aria-label="Mobile">
               {navLinks.map((link) => (
