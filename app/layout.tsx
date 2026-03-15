@@ -26,6 +26,8 @@ const poppins = Poppins({
 
 const GOOGLE_SITE_VERIFICATION =
   process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION?.trim() || "";
+const GOOGLE_ADSENSE_ID =
+  process.env.NEXT_PUBLIC_GOOGLE_ADSENSE_ID?.trim() || "ca-pub-5278426429130746";
 
 export const metadata: Metadata = {
   title: "Cactus System | Desenvolvimento de Software, Dados e IA",
@@ -44,6 +46,9 @@ export const metadata: Metadata = {
       google: GOOGLE_SITE_VERIFICATION,
     },
   }),
+  ...(GOOGLE_ADSENSE_ID && {
+    other: { "google-adsense-account": GOOGLE_ADSENSE_ID },
+  }),
 };
 
 export default function RootLayout({
@@ -53,6 +58,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR" suppressHydrationWarning>
+      {GOOGLE_ADSENSE_ID && (
+        <Script
+          src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${GOOGLE_ADSENSE_ID}`}
+          strategy="afterInteractive"
+          crossOrigin="anonymous"
+        />
+      )}
       <Script
         id="a11y-apply-inline"
         strategy="beforeInteractive"
