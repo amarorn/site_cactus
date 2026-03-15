@@ -29,11 +29,11 @@ export function WhatsAppFab() {
       target="_blank"
       rel="noopener noreferrer"
       onClick={() => trackEvent("whatsapp_click")}
-      className="fixed bottom-20 right-4 z-40 flex h-14 w-14 items-center justify-center rounded-full text-white shadow-lg transition-all hover:scale-110 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#25D366] focus:ring-offset-2 md:bottom-6 md:right-20"
+      className="fixed bottom-20 right-5 z-40 flex h-12 w-12 items-center justify-center rounded-full text-white shadow-lg transition-transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#25D366] focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-graphite"
       style={{ backgroundColor: "#25D366" }}
       aria-label="Falar pelo WhatsApp"
     >
-      <WhatsAppIcon className="h-7 w-7" />
+      <WhatsAppIcon className="h-6 w-6" />
     </Link>
   );
 }

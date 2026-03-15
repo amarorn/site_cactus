@@ -20,7 +20,7 @@ export function A11yWidget() {
   }, [open]);
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-2">
+    <div className="fixed bottom-5 left-5 z-50 flex flex-col items-start gap-2">
       <div
         ref={panelRef}
         role="dialog"
