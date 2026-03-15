@@ -10,8 +10,6 @@ export const metadata: Metadata = {
     "Entre em contato com a Cactus System. Desenvolvimento de software, dados e IA.",
 };
 
-export const dynamic = "force-dynamic";
-
 export default function ContatoPage() {
   return (
     <div className="bg-white dark:bg-graphite">
