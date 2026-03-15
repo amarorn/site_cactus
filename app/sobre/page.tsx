@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { CTALink } from "@/components/CTALink";
 import { about } from "@/content/about";
 import { company } from "@/content/company";
 import { contact } from "@/content/contact";
@@ -93,13 +93,13 @@ export default function SobrePage() {
       <section className="border-t border-graphite/10 dark:border-white/10 bg-graphite px-4 py-16 sm:px-6 sm:py-20 lg:px-8 text-white">
         <div className="mx-auto max-w-[1280px] text-center">
           <p className="text-lg font-medium">Quer conhecer melhor?</p>
-          <Link
+          <CTALink
             href="/contato"
             className="group mt-4 inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 font-semibold text-white btn-primary-cta hover:bg-primary-hover"
           >
             {contact.primaryCTA}
             <ArrowRight className="cta-arrow h-4 w-4" />
-          </Link>
+          </CTALink>
         </div>
       </section>
     </div>

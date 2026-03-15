@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { company } from "@/content/company";
 import { contact } from "@/content/contact";
+import { CTALink } from "@/components/CTALink";
 import { HeroBackground } from "./HeroBackground";
 
 export function HeroSection() {
@@ -47,13 +48,13 @@ export function HeroSection() {
               className="mt-10 flex flex-col gap-4 sm:flex-row"
             >
               <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-                <Link
+                <CTALink
                   href="/contato"
                   className="group inline-flex items-center justify-center gap-2 rounded-full bg-primary px-6 py-3.5 font-semibold text-white btn-primary-cta hover:bg-primary-hover focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
                 >
-                {contact.primaryCTA}
-                <ArrowRight className="cta-arrow h-4 w-4" />
-              </Link>
+                  {contact.primaryCTA}
+                  <ArrowRight className="cta-arrow h-4 w-4" />
+                </CTALink>
               </motion.div>
               <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
                 <Link

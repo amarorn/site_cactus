@@ -7,6 +7,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ArrowRight } from "lucide-react";
 import { ThemeToggle } from "./ThemeToggle";
 import { Logo } from "./Logo";
+import { CTALink } from "./CTALink";
 import { navLinks } from "@/content/navigation";
 import { contact } from "@/content/contact";
 import { cn } from "@/lib/utils";
@@ -50,13 +51,13 @@ export function Header() {
 
         <div className="hidden items-center gap-2 md:flex">
           <ThemeToggle />
-          <Link
+          <CTALink
             href="/contato"
             className="group inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-white btn-primary-cta hover:bg-primary-hover focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
           >
             {contact.primaryCTA}
             <ArrowRight className="cta-arrow h-4 w-4" />
-          </Link>
+          </CTALink>
         </div>
 
         <div className="flex items-center gap-2 md:hidden">
@@ -98,14 +99,14 @@ export function Header() {
                   {link.label}
                 </Link>
               ))}
-              <Link
+              <CTALink
                 href="/contato"
                 onClick={() => setMobileOpen(false)}
                 className="group mt-2 inline-flex w-full items-center justify-center gap-2 rounded-full bg-primary px-5 py-3 text-sm font-semibold text-white btn-primary-cta hover:bg-primary-hover"
               >
                 {contact.primaryCTA}
                 <ArrowRight className="cta-arrow h-4 w-4" />
-              </Link>
+              </CTALink>
             </nav>
           </motion.div>
         )}

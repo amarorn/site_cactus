@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { z } from "zod";
 import { contact } from "@/content/contact";
+import { trackEvent } from "@/lib/gtag";
 
 const VALID_SERVICE_IDS = [
   "mobile", "web", "systems", "data-arch", "data-eng",
@@ -100,6 +101,7 @@ export function ContactForm({ defaultService: defaultServiceProp, formEndpoint: 
         });
         if (res.ok) {
           setStatus("success");
+          trackEvent("form_contact_submit", { method: "formspree" });
         } else {
           setStatus("error");
         }
@@ -124,6 +126,7 @@ export function ContactForm({ defaultService: defaultServiceProp, formEndpoint: 
       });
       window.location.href = `mailto:${contact.email}?${params.toString()}`;
       setStatus("success");
+      trackEvent("form_contact_submit", { method: "mailto" });
       setIsSubmitting(false);
     }
   }

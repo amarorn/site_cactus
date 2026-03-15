@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { CTALink } from "@/components/CTALink";
 import { servicesDetail } from "@/content/servicesDetail";
 import { contact } from "@/content/contact";
 
@@ -44,13 +45,13 @@ export default function ServicosPage() {
                   <p className="mt-4 text-base leading-relaxed text-graphite/80 dark:text-white/80">
                     {service.overview}
                   </p>
-                  <Link
+                  <CTALink
                     href={`/contato?servico=${service.id}`}
                     className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-primary hover:gap-3"
                   >
                     {contact.primaryCTA}
                     <ArrowRight className="h-4 w-4" />
-                  </Link>
+                  </CTALink>
                 </div>
                 <div className="lg:col-span-2">
                   <div className="grid gap-8 sm:grid-cols-2">

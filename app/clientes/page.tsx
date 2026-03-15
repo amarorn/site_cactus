@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { CTALink } from "@/components/CTALink";
+import { CaseCard } from "@/components/sections/CaseCard";
 import { cases } from "@/content/cases";
 import { clientNames } from "@/content/clients";
 import { contact } from "@/content/contact";
-import { CaseCard } from "@/components/sections/CaseCard";
 
 export const metadata: Metadata = {
   title: "Clientes e Cases | Cactus System",
@@ -75,13 +75,13 @@ export default function ClientesPage() {
           <p className="text-base text-graphite/80 dark:text-white/80">
             Quer fazer parte dessa lista? Fale conosco.
           </p>
-          <Link
+          <CTALink
             href="/contato"
             className="group mt-4 inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 font-semibold text-white btn-primary-cta hover:bg-primary-hover"
           >
             {contact.primaryCTA}
             <ArrowRight className="cta-arrow h-4 w-4" />
-          </Link>
+          </CTALink>
         </div>
       </section>
     </div>
