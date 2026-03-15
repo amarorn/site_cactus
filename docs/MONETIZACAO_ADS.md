@@ -16,3 +16,15 @@ O foco do site da Cactus é **geração de leads** (formulário, WhatsApp, CTA �
 O script do AdSense já está integrado via componente `GoogleAdSense` no layout. O ID do cliente é lido de `NEXT_PUBLIC_ADSENSE_CLIENT_ID` (ex.: `ca-pub-XXXXXXXXXXXXXXXX`). Se a variável não estiver definida, o script não é carregado.
 
 Para exibir anúncios em páginas específicas, use os blocos de anúncio que o AdSense fornece (código de unidade de anúncio) nos locais desejados. Use os relatórios do **Analytics** (páginas mais visitadas, tempo na página, rejeição) para decidir onde colocar as unidades.
+
+## Verificação do site no AdSense
+
+O AdSense só consegue verificar o site se:
+
+1. **O site estiver no ar e público** – em produção (ex.: Vercel, Netlify), não em localhost. Faça o deploy antes de solicitar a verificação.
+2. **A meta tag de verificação estiver na página** – No painel do AdSense (Configurações → Gerenciamento de sites → Verificar site), escolha o método **“Tag HTML”** e copie o valor do atributo `content` da meta tag. No projeto, defina no `.env.local`:
+   ```bash
+   NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION=valor_copiado_do_content
+   ```
+   O layout já está preparado: quando essa variável existir, a meta tag `google-site-verification` é incluída automaticamente no `<head>`.
+3. **Dar tempo para o rastreador** – Após o deploy com a meta tag, clique em “Verificar” no AdSense. Se falhar, aguarde algumas horas e tente de novo; evite bloquear o rastreador (robots.txt, login obrigatório na home).

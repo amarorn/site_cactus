@@ -16,6 +16,9 @@ const poppins = Poppins({
   weight: ["400", "500", "600", "700"],
 });
 
+const GOOGLE_SITE_VERIFICATION =
+  process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION?.trim() || "";
+
 export const metadata: Metadata = {
   title: "Cactus System | Desenvolvimento de Software, Dados e IA",
   description:
@@ -28,6 +31,11 @@ export const metadata: Metadata = {
     type: "website",
     locale: "pt_BR",
   },
+  ...(GOOGLE_SITE_VERIFICATION && {
+    verification: {
+      google: GOOGLE_SITE_VERIFICATION,
+    },
+  }),
 };
 
 export default function RootLayout({
