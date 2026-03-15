@@ -24,11 +24,14 @@ export function SectionHeader({
       className={centered ? "mx-auto max-w-2xl text-center" : ""}
     >
       {overline && (
-        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">
-          {overline}
-        </p>
+        <div className={centered ? "flex flex-col items-center gap-3" : "flex flex-col items-start gap-3"}>
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">
+            {overline}
+          </p>
+          <div className="section-accent" />
+        </div>
       )}
-      <h2 className="mt-2 text-2xl font-bold text-graphite dark:text-white sm:text-3xl lg:text-4xl">
+      <h2 className="mt-4 text-2xl font-bold tracking-tight text-graphite dark:text-white sm:text-3xl lg:text-4xl balance">
         {title}
       </h2>
       {subtitle && (

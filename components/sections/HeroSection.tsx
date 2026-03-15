@@ -9,7 +9,7 @@ import { HeroBackground } from "./HeroBackground";
 
 export function HeroSection() {
   return (
-    <section className="relative bg-white text-graphite dark:bg-graphite dark:text-white">
+    <section className="relative bg-[var(--background)] text-graphite dark:bg-graphite dark:text-white">
       <HeroBackground />
         <div className="relative px-4 py-24 sm:px-6 sm:py-32 lg:px-8 lg:py-40">
         <div className="mx-auto max-w-[1280px]">
@@ -26,7 +26,7 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
-              className="mt-4 text-3xl font-bold tracking-tight text-graphite dark:text-white sm:text-4xl md:text-5xl lg:text-6xl"
+              className="mt-4 text-3xl font-bold tracking-tight text-graphite dark:text-white sm:text-4xl md:text-5xl lg:text-6xl balance"
             >
               {company.tagline}
             </motion.h1>
