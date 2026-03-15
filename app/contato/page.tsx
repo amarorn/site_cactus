@@ -10,6 +10,8 @@ export const metadata: Metadata = {
     "Entre em contato com a Cactus System. Desenvolvimento de software, dados e IA.",
 };
 
+export const dynamic = "force-dynamic";
+
 export default function ContatoPage() {
   return (
     <div className="bg-white dark:bg-graphite">
@@ -34,7 +36,7 @@ export default function ContatoPage() {
               <h2 className="text-xl font-bold text-graphite dark:text-white">
                 Formulário
               </h2>
-              <Suspense fallback={<div className="mt-6 h-64 animate-pulse rounded-xl bg-graphite/10 dark:bg-white/10" />}>
+              <Suspense fallback={<ContactFormFallback />}>
                 <ContactForm formEndpoint={contact.formEndpoint} />
               </Suspense>
             </div>
@@ -75,5 +77,11 @@ export default function ContatoPage() {
         </div>
       </section>
     </div>
+  );
+}
+
+function ContactFormFallback() {
+  return (
+    <div className="mt-6 h-64 animate-pulse rounded-xl bg-graphite/10 dark:bg-white/10" aria-hidden />
   );
 }

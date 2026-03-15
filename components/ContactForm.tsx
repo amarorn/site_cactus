@@ -42,7 +42,7 @@ type ContactFormProps = {
 
 export function ContactForm({ defaultService: defaultServiceProp, formEndpoint: formEndpointProp }: ContactFormProps) {
   const searchParams = useSearchParams();
-  const servicoFromUrl = searchParams.get("servico");
+  const servicoFromUrl = searchParams?.get?.("servico") ?? null;
   const defaultService =
     defaultServiceProp ??
     (servicoFromUrl && VALID_SERVICE_IDS.includes(servicoFromUrl) ? servicoFromUrl : undefined);
