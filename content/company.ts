@@ -1,5 +1,8 @@
+const CURRENT_YEAR = 2026;
+
 export const company = {
   name: "Cactus System",
+  currentYear: CURRENT_YEAR,
   tagline: "Software, dados e IA com engenharia que sustenta crescimento.",
   shortDescription:
     "Empresa de tecnologia com profundidade técnica e visão de negócio. Desenvolvimento de aplicativos, plataformas web, sistemas sob medida, arquitetura e engenharia de dados, analytics e IA aplicada.",

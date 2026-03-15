@@ -14,6 +14,7 @@ export function LogoInline({
   return (
     <span
       className={`font-semibold tracking-tight text-xl sm:text-2xl ${light ? "text-white" : "text-graphite dark:text-white"} ${className}`}
+      suppressHydrationWarning
     >
       Cactus System
     </span>

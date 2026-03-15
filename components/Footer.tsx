@@ -5,8 +5,6 @@ import { contact } from "@/content/contact";
 import { LogoInline } from "@/components/LogoInline";
 
 export function Footer() {
-  const currentYear = new Date().getFullYear();
-
   return (
     <footer className="relative bg-graphite text-white">
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" aria-hidden />
@@ -88,8 +86,8 @@ export function Footer() {
         </div>
 
         <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 sm:flex-row">
-          <p className="text-sm text-white/60" suppressHydrationWarning>
-            {currentYear} {company.name}. Todos os direitos reservados.
+          <p className="text-sm text-white/60">
+            {company.currentYear} {company.name}. Todos os direitos reservados.
           </p>
           <div className="flex gap-6">
             {footerLinks.legal.map((link) => (
