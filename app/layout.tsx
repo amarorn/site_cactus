@@ -5,7 +5,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { Header } from "@/components/Header";
 import { JsonLd } from "@/components/JsonLd";
-import { GoogleAnalytics } from "@/components/GoogleAnalytics";
+import { FirebaseInit } from "@/components/FirebaseInit";
 import { ClientOnlyWidgets } from "@/components/ClientOnlyWidgets";
 
 const Footer = dynamic(
@@ -49,7 +49,7 @@ export default function RootLayout({
   return (
     <html lang="pt-BR" suppressHydrationWarning>
       <body className={`${poppins.variable} font-sans antialiased`} suppressHydrationWarning>
-        <GoogleAnalytics />
+        <FirebaseInit />
         <ThemeProvider>
           <ClientOnlyWidgets />
           <JsonLd />

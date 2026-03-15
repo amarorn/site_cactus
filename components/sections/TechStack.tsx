@@ -18,8 +18,10 @@ const specialities = [
 
 export function TechStack() {
   return (
-    <section className="border-t border-graphite/10 dark:border-white/10 bg-graphite py-24 sm:py-32 text-white">
-      <div className="mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-8">
+    <section className="relative overflow-hidden border-t border-graphite/10 dark:border-white/10 bg-graphite py-24 sm:py-32 text-white">
+      <div className="pointer-events-none absolute inset-0 bg-section-blobs" aria-hidden />
+      <div className="pointer-events-none absolute inset-0 bg-section-vignette" aria-hidden />
+      <div className="relative mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

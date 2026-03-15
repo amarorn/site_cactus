@@ -66,29 +66,55 @@
   transform: translateX(4px);
 }
 
-/* padroes geometricos discretos */
+/* padroes geometricos (mesmo peso no light e no dark) */
 .bg-pattern-grid {
   background-image: linear-gradient(to right, currentColor 1px, transparent 1px),
     linear-gradient(to bottom, currentColor 1px, transparent 1px);
   background-size: 48px 48px;
-  opacity: 0.04;
-}
-.dark .bg-pattern-grid {
-  opacity: 0.06;
+  opacity: 0.08;
 }
 
 .bg-pattern-dots {
   background-image: radial-gradient(circle at 2px 2px, currentColor 1px, transparent 0);
   background-size: 24px 24px;
-  opacity: 0.03;
-}
-.dark .bg-pattern-dots {
-  opacity: 0.05;
+  opacity: 0.07;
 }
 
 .bg-pattern-organic {
   background-image: radial-gradient(ellipse 80% 50% at 50% 50%, currentColor 0%, transparent 70%);
-  opacity: 0.02;
+  opacity: 0.05;
+}
+
+/* profundidade em secoes (mesmo padrao light e dark) */
+.bg-section-depth {
+  background-image:
+    radial-gradient(
+      ellipse 100% 60% at 70% 20%,
+      rgba(72, 181, 121, 0.1) 0%,
+      transparent 45%
+    ),
+    radial-gradient(
+      ellipse 90% 70% at 20% 90%,
+      rgba(72, 181, 121, 0.05) 0%,
+      transparent 40%
+    );
+}
+
+/* vinheta (mesmo padrao light e dark) */
+.bg-section-vignette {
+  background-image: radial-gradient(
+    ellipse 70% 70% at 50% 50%,
+    transparent 40%,
+    rgba(0, 0, 0, 0.15) 85%,
+    rgba(0, 0, 0, 0.25) 100%
+  );
+}
+
+/* blobs (mesmo padrao light e dark) */
+.bg-section-blobs {
+  background-image:
+    radial-gradient(ellipse 70% 50% at 80% 20%, rgba(72, 181, 121, 0.14) 0%, transparent 45%),
+    radial-gradient(ellipse 50% 70% at 10% 80%, rgba(72, 181, 121, 0.07) 0%, transparent 45%);
 }
 
 :root {

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { HeroBackground } from "@/components/sections/HeroBackground";
 import { privacy } from "@/content/privacy";
 
 export const metadata: Metadata = {
@@ -10,15 +11,16 @@ export const metadata: Metadata = {
 export default function PrivacidadePage() {
   return (
     <div className="bg-white dark:bg-graphite">
-      <section className="border-b border-graphite/10 dark:border-white/10 bg-light-gray dark:bg-graphite/80 px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
-        <div className="mx-auto max-w-[1280px]">
+      <section className="relative overflow-hidden border-b border-white/10 bg-graphite px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
+        <HeroBackground />
+        <div className="relative mx-auto max-w-[1280px]">
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">
             LEGAL
           </p>
-          <h1 className="mt-2 text-3xl font-bold text-graphite dark:text-white sm:text-4xl lg:text-5xl">
+          <h1 className="mt-2 text-3xl font-bold text-white sm:text-4xl lg:text-5xl">
             {privacy.title}
           </h1>
-          <p className="mt-4 text-sm text-graphite/70 dark:text-white/70">
+          <p className="mt-4 text-sm text-white/80">
             Última atualização: {privacy.lastUpdated}
           </p>
         </div>

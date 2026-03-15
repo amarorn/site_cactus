@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ArrowRight } from "lucide-react";
 import { ThemeToggle } from "./ThemeToggle";
@@ -12,10 +12,13 @@ import { navLinks } from "@/content/navigation";
 import { contact } from "@/content/contact";
 import { cn } from "@/lib/utils";
 
+const HEADER_VIDEO_SRC = "/videos/hero-background.mp4";
+
 export function Header() {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 16);
@@ -23,16 +26,43 @@ export function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    if (mq.matches) video.pause();
+    else video.play().catch(() => {});
+    const handler = () => {
+      if (mq.matches) video.pause();
+      else video.play().catch(() => {});
+    };
+    mq.addEventListener("change", handler);
+    return () => mq.removeEventListener("change", handler);
+  }, []);
+
   return (
     <header
       className={cn(
-        "sticky top-0 z-50 w-full border-b border-graphite/10 dark:border-white/10 transition-all duration-300",
-        "bg-[var(--background)]/95 dark:bg-graphite/90 backdrop-blur-md supports-[backdrop-filter]:bg-[var(--background)]/90 dark:supports-[backdrop-filter]:bg-graphite/80",
+        "sticky top-0 z-50 w-full overflow-hidden border-b border-graphite/10 dark:border-white/10 transition-all duration-300",
         scrolled && "shadow-sm dark:shadow-black/20"
       )}
     >
-      <div className="mx-auto flex h-16 max-w-[1280px] items-center justify-between px-4 sm:px-6 lg:px-8">
-        <Logo />
+      <div className="pointer-events-none absolute inset-0">
+        <video
+          ref={videoRef}
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute inset-0 h-full w-full object-cover object-center"
+          aria-hidden
+        >
+          <source src={HEADER_VIDEO_SRC} type="video/mp4" />
+        </video>
+        <div className="absolute inset-0 bg-graphite/90 dark:bg-graphite/95 backdrop-blur-md" aria-hidden />
+      </div>
+      <div className="relative z-10 mx-auto flex h-16 max-w-[1280px] items-center justify-between px-4 sm:px-6 lg:px-8">
+        <Logo onDark />
 
         <nav className="hidden items-center gap-8 md:flex" aria-label="Principal">
           {navLinks.map((link) => (
@@ -41,7 +71,7 @@ export function Header() {
               href={link.href}
               className={cn(
                 "text-sm font-medium transition-colors duration-200 hover:text-primary",
-                pathname === link.href ? "text-primary" : "text-graphite dark:text-white/90"
+                pathname === link.href ? "text-primary" : "text-white/90"
               )}
             >
               {link.label}
@@ -50,7 +80,7 @@ export function Header() {
         </nav>
 
         <div className="hidden items-center gap-2 md:flex">
-          <ThemeToggle />
+          <ThemeToggle variant="dark-bg" />
           <CTALink
             href="/contato"
             className="group inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-white btn-primary-cta hover:bg-primary-hover focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
@@ -61,10 +91,10 @@ export function Header() {
         </div>
 
         <div className="flex items-center gap-2 md:hidden">
-          <ThemeToggle />
+          <ThemeToggle variant="dark-bg" />
           <button
           type="button"
-          className="flex h-10 w-10 items-center justify-center rounded-lg text-graphite hover:bg-light-gray dark:text-white dark:hover:bg-white/10 md:hidden"
+          className="flex h-10 w-10 items-center justify-center rounded-lg text-white/90 hover:bg-white/10 md:hidden"
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-expanded={mobileOpen}
           aria-controls="mobile-menu"
@@ -83,7 +113,7 @@ export function Header() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.2 }}
-            className="overflow-hidden border-t border-graphite/10 dark:border-white/10 bg-[var(--background)] dark:bg-graphite md:hidden"
+            className="relative z-10 overflow-hidden border-t border-graphite/10 dark:border-white/10 bg-graphite/95 backdrop-blur-md md:hidden"
           >
             <nav className="flex flex-col gap-1 px-4 py-4" aria-label="Mobile">
               {navLinks.map((link) => (
@@ -92,8 +122,8 @@ export function Header() {
                   href={link.href}
                   onClick={() => setMobileOpen(false)}
                   className={cn(
-                    "rounded-lg px-4 py-3 text-sm font-medium transition-colors hover:bg-light-gray dark:hover:bg-white/10",
-                    pathname === link.href ? "text-primary" : "text-graphite dark:text-white/90"
+                    "rounded-lg px-4 py-3 text-sm font-medium transition-colors hover:bg-white/10",
+                    pathname === link.href ? "text-primary" : "text-white/90"
                   )}
                 >
                   {link.label}

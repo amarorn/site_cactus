@@ -10,9 +10,9 @@ import { HeroBackground } from "./HeroBackground";
 
 export function HeroSection() {
   return (
-    <section className="relative bg-[var(--background)] text-graphite dark:bg-graphite dark:text-white">
+    <section className="relative bg-graphite text-white">
       <HeroBackground />
-        <div className="relative px-4 py-24 sm:px-6 sm:py-32 lg:px-8 lg:py-40">
+      <div className="relative px-4 py-24 sm:px-6 sm:py-32 lg:px-8 lg:py-40">
         <div className="mx-auto max-w-[1280px]">
           <div className="mx-auto max-w-3xl">
             <motion.p
@@ -35,7 +35,7 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.16, ease: [0.22, 1, 0.36, 1] }}
-              className="mt-6 text-lg leading-relaxed text-graphite/80 dark:text-white/80 sm:text-xl"
+              className="mt-6 text-lg leading-relaxed text-white/85 sm:text-xl"
             >
               Aplicativos mobile, plataformas web, sistemas sob medida, ambientes
               analíticos, arquitetura de dados e soluções de IA para resultado de
@@ -50,7 +50,7 @@ export function HeroSection() {
               <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
                 <CTALink
                   href="/contato"
-                  className="group inline-flex items-center justify-center gap-2 rounded-full bg-primary px-6 py-3.5 font-semibold text-white btn-primary-cta hover:bg-primary-hover focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+                  className="group inline-flex items-center justify-center gap-2 rounded-full bg-primary px-6 py-3.5 font-semibold text-white btn-primary-cta hover:bg-primary-hover focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-graphite"
                 >
                   {contact.primaryCTA}
                   <ArrowRight className="cta-arrow h-4 w-4" />
@@ -59,7 +59,7 @@ export function HeroSection() {
               <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
                 <Link
                   href="/servicos"
-                  className="inline-flex items-center justify-center gap-2 rounded-full border-2 border-primary/40 px-6 py-3.5 font-semibold text-primary transition-all duration-300 hover:border-primary hover:bg-primary/5 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:border-primary/40 dark:text-primary dark:hover:bg-primary/10 dark:focus:ring-offset-graphite"
+                  className="inline-flex items-center justify-center gap-2 rounded-full border-2 border-white/50 px-6 py-3.5 font-semibold text-white transition-all duration-300 hover:border-white hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-graphite"
                 >
                   Ver serviços
                   <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />

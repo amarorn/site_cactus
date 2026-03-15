@@ -12,6 +12,8 @@ export function LocationSection() {
         style={{ background: "var(--gradient-regional)" }}
         aria-hidden
       />
+      <div className="pointer-events-none absolute inset-0 bg-section-depth" aria-hidden />
+      <div className="pointer-events-none absolute inset-0 bg-section-vignette" aria-hidden />
       <div className="relative mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

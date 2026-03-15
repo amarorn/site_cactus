@@ -52,6 +52,8 @@ const differentials = [
 export function WhyCactus() {
   return (
     <section className="relative overflow-hidden py-24 sm:py-32 bg-white dark:bg-graphite">
+      <div className="pointer-events-none absolute inset-0 bg-section-depth" aria-hidden />
+      <div className="pointer-events-none absolute inset-0 bg-section-vignette" aria-hidden />
       <div className="pointer-events-none absolute inset-0 text-graphite dark:text-white bg-pattern-dots" aria-hidden />
       <div className="relative mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-8">
         <motion.div

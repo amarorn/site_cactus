@@ -7,7 +7,9 @@ const LOGOS_BASE = "/logos/clients";
 
 export function ClientStrip() {
   return (
-    <section className="border-y border-graphite/10 dark:border-white/10 bg-light-gray dark:bg-graphite/50 py-16">
+    <section className="relative overflow-hidden border-y border-graphite/10 dark:border-white/10 bg-light-gray dark:bg-graphite py-16">
+      <div className="pointer-events-none absolute inset-0 bg-section-depth" aria-hidden />
+      <div className="pointer-events-none absolute inset-0 bg-section-vignette" aria-hidden />
       <div className="mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-8">
         <motion.p
           initial={{ opacity: 0 }}
@@ -51,7 +53,7 @@ function ClientLogo({
       viewport={{ once: true }}
       transition={{ duration: 0.4, delay: index * 0.05 }}
       whileHover={{ scale: 1.05, y: -2 }}
-      className="flex h-12 w-32 shrink-0 items-center justify-center rounded-lg border border-graphite/15 dark:border-white/20 bg-white dark:bg-white/5 px-4 py-2 shadow-sm transition-shadow hover:shadow-md sm:h-14 sm:w-36"
+      className="flex h-12 w-32 shrink-0 items-center justify-center rounded-lg border border-graphite/15 dark:border-white/20 px-4 py-2 transition-shadow hover:shadow-md sm:h-14 sm:w-36"
     >
       {logoSrc ? (
         <img

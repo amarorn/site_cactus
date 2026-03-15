@@ -32,7 +32,9 @@ const steps = [
 
 export function ProcessTimeline() {
   return (
-    <section className="relative overflow-hidden border-t border-graphite/10 dark:border-white/10 bg-light-gray dark:bg-graphite/50 py-24 sm:py-32">
+    <section className="relative overflow-hidden border-t border-graphite/10 dark:border-white/10 bg-light-gray dark:bg-graphite py-24 sm:py-32">
+      <div className="pointer-events-none absolute inset-0 bg-section-depth" aria-hidden />
+      <div className="pointer-events-none absolute inset-0 bg-section-vignette" aria-hidden />
       <div
         className="pointer-events-none absolute inset-0 text-graphite dark:text-white bg-pattern-dots"
         aria-hidden

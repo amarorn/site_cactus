@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 export default function ServicosPage() {
   return (
     <div className="bg-white dark:bg-graphite">
-      <section className="relative overflow-hidden border-b border-graphite/10 dark:border-white/10 bg-[var(--background)] dark:bg-graphite px-4 py-20 sm:px-6 sm:py-28 lg:px-8">
+      <section className="relative overflow-hidden border-b border-white/10 bg-graphite px-4 py-20 sm:px-6 sm:py-28 lg:px-8">
         <HeroBackground />
         <div className="relative mx-auto max-w-[1280px]">
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">
@@ -24,7 +24,7 @@ export default function ServicosPage() {
           <h1 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl text-gradient-animated balance">
             O que fazemos
           </h1>
-          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-graphite/80 dark:text-white/80">
+          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-white/85">
             Desenvolvimento de software, dados e IA com profundidade técnica e
             foco em resultado de negócio.
           </p>
@@ -33,7 +33,7 @@ export default function ServicosPage() {
               <Link
                 key={s.id}
                 href={`#${s.id}`}
-                className="rounded-full border border-graphite/15 dark:border-white/15 bg-white/60 dark:bg-white/5 px-4 py-1.5 text-sm font-medium text-graphite/80 dark:text-white/80 backdrop-blur-sm transition-all duration-200 hover:border-primary/50 hover:text-primary hover:bg-primary/5"
+                className="rounded-full border border-white/30 bg-white/10 px-4 py-1.5 text-sm font-medium text-white/90 backdrop-blur-sm transition-all duration-200 hover:border-primary hover:text-primary hover:bg-primary/20"
               >
                 {s.title}
               </Link>

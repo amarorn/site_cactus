@@ -43,7 +43,11 @@ export function HeroBackground({ className }: HeroBackgroundProps) {
         <source src={HERO_VIDEO_SRC} type="video/mp4" />
       </video>
       <div
-        className="absolute inset-0 bg-graphite/70 dark:bg-graphite/80"
+        className="absolute inset-0 bg-graphite/85 dark:bg-graphite/90"
+        aria-hidden
+      />
+      <div
+        className="absolute inset-0 bg-gradient-to-b from-graphite/60 via-transparent to-graphite/30"
         aria-hidden
       />
       <div
