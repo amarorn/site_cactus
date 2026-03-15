@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+@source "../components/**/*.tsx";
+@source "../components/**/*.ts";
+@source "./**/*.tsx";
+
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
@@ -101,11 +105,18 @@
 
 html {
   scroll-behavior: smooth;
+  box-sizing: border-box;
+  -webkit-text-size-adjust: 100%;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
+  min-height: 100vh;
 }
 
 /* linha de destaque em titulos de secao */
