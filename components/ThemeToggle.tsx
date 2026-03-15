@@ -12,22 +12,17 @@ export function ThemeToggle() {
     setMounted(true);
   }, []);
 
-  if (!mounted) {
-    return (
-      <div className="h-10 w-10 rounded-lg bg-graphite/10 dark:bg-white/10" />
-    );
-  }
-
-  const isDark = resolvedTheme === "dark";
+  const isDark = mounted && resolvedTheme === "dark";
 
   return (
     <button
       type="button"
       onClick={() => setTheme(isDark ? "light" : "dark")}
       className="flex h-10 w-10 items-center justify-center rounded-lg text-graphite transition-colors hover:bg-graphite/10 dark:text-white dark:hover:bg-white/10"
-      aria-label={isDark ? "Ativar modo claro" : "Ativar modo escuro"}
+      aria-label="Alternar tema"
+      suppressHydrationWarning
     >
-      {isDark ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+      {mounted ? (isDark ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />) : <span className="h-5 w-5" />}
     </button>
   );
 }

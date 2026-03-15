@@ -52,7 +52,7 @@ export default function RootLayout({
           <meta name="google-adsense-account" content={ADSENSE_CLIENT_ID} />
         )}
       </head>
-      <body className={`${poppins.variable} font-sans antialiased`}>
+      <body className={`${poppins.variable} font-sans antialiased`} suppressHydrationWarning>
         <GoogleAnalytics />
         <GoogleAdSense />
         <ThemeProvider>
