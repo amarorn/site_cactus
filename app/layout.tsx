@@ -38,6 +38,8 @@ export const metadata: Metadata = {
   }),
 };
 
+const ADSENSE_CLIENT_ID = process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID?.trim() || "";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -45,6 +47,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR" suppressHydrationWarning>
+      <head>
+        {ADSENSE_CLIENT_ID && (
+          <meta name="google-adsense-account" content={ADSENSE_CLIENT_ID} />
+        )}
+      </head>
       <body className={`${poppins.variable} font-sans antialiased`}>
         <GoogleAnalytics />
         <GoogleAdSense />
