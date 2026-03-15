@@ -3,6 +3,8 @@
 import { motion } from "framer-motion";
 import { clients } from "@/content/clients";
 
+const LOGOS_BASE = "/logos/clients";
+
 export function ClientStrip() {
   return (
     <section className="border-y border-graphite/10 dark:border-white/10 bg-light-gray dark:bg-graphite/50 py-16">
@@ -37,6 +39,11 @@ function ClientLogo({
   client: (typeof clients)[number];
   index: number;
 }) {
+  const logoSrc = "logoFile" in client && client.logoFile
+    ? `${LOGOS_BASE}/${client.slug}.${client.logoFile}`
+    : null;
+  const imgClass = client.logoTheme === "light" ? "invert dark:invert-0" : "";
+
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.95 }}
@@ -46,9 +53,20 @@ function ClientLogo({
       whileHover={{ scale: 1.05, y: -2 }}
       className="flex h-12 w-32 shrink-0 items-center justify-center rounded-lg border border-graphite/15 dark:border-white/20 bg-white dark:bg-white/5 px-4 py-2 shadow-sm transition-shadow hover:shadow-md sm:h-14 sm:w-36"
     >
-      <span className="text-center text-sm font-medium text-graphite dark:text-white/90">
-        {client.name}
-      </span>
+      {logoSrc ? (
+        <img
+          src={logoSrc}
+          alt={client.name}
+          width={120}
+          height={40}
+          decoding="async"
+          className={`h-6 w-auto max-w-[100px] object-contain object-center sm:h-7 sm:max-w-[120px] ${imgClass}`}
+        />
+      ) : (
+        <span className="text-center text-sm font-medium text-graphite dark:text-white/90">
+          {client.name}
+        </span>
+      )}
     </motion.div>
   );
 }
