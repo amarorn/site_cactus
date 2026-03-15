@@ -14,19 +14,19 @@ export function Logo() {
   }, []);
 
   const isDark = mounted && resolvedTheme === "dark";
-  const logoSrc = isDark ? "/brand/logo-primary-dark.png" : "/brand/logo-primary-light.png";
+  const logoSrc = isDark ? "/brand/logo-primary.svg" : "/brand/logo-primary-dark.svg";
 
   return (
     <Link
       href="/"
-      className="relative flex items-center"
+      className="relative flex items-center rounded-md px-2 -mx-2 py-1 -my-1 bg-white/80 dark:bg-graphite/90 supports-[backdrop-filter]:bg-white/70 dark:supports-[backdrop-filter]:bg-graphite/80"
       aria-label="Cactus System - início"
     >
       <Image
         src={logoSrc}
         alt="Cactus System"
-        width={140}
-        height={40}
+        width={220}
+        height={50}
         className="h-9 w-auto"
         priority
       />

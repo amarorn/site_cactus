@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import { cases } from "@/content/cases";
 import { clientNames } from "@/content/clients";
 import { contact } from "@/content/contact";
@@ -76,9 +77,10 @@ export default function ClientesPage() {
           </p>
           <Link
             href="/contato"
-            className="mt-4 inline-block rounded-full bg-primary px-6 py-3 font-semibold text-white transition-colors hover:bg-primary-hover"
+            className="group mt-4 inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 font-semibold text-white btn-primary-cta hover:bg-primary-hover"
           >
             {contact.primaryCTA}
+            <ArrowRight className="cta-arrow h-4 w-4" />
           </Link>
         </div>
       </section>

@@ -12,14 +12,91 @@
   --font-sans: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
 }
 
+/* microinteractions - transitions suaves */
+.hover-lift {
+  transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.25s ease, border-color 0.25s ease, color 0.2s ease;
+}
+.hover-lift:hover {
+  transform: translateY(-2px);
+}
+.hover-scale {
+  transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.hover-scale:hover {
+  transform: scale(1.02);
+}
+.hover-scale:active {
+  transform: scale(0.98);
+}
+.btn-interactive {
+  transition: background-color 0.25s ease, transform 0.2s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.25s ease;
+}
+.btn-interactive:hover {
+  transform: translateY(-2px);
+}
+.btn-interactive:active {
+  transform: translateY(0);
+}
+
+/* CTA primario - sombra/brilho no hover */
+.btn-primary-cta {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  transition: background-color 0.25s ease, transform 0.2s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s ease;
+}
+.btn-primary-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(72, 181, 121, 0.35), 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+.btn-primary-cta:active {
+  transform: translateY(0);
+}
+.dark .btn-primary-cta:hover {
+  box-shadow: 0 8px 24px rgba(72, 181, 121, 0.4), 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* seta CTA - microanimacao */
+.cta-arrow {
+  transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.btn-primary-cta:hover .cta-arrow {
+  transform: translateX(4px);
+}
+
+/* padroes geometricos discretos */
+.bg-pattern-grid {
+  background-image: linear-gradient(to right, currentColor 1px, transparent 1px),
+    linear-gradient(to bottom, currentColor 1px, transparent 1px);
+  background-size: 48px 48px;
+  opacity: 0.04;
+}
+.dark .bg-pattern-grid {
+  opacity: 0.06;
+}
+
+.bg-pattern-dots {
+  background-image: radial-gradient(circle at 2px 2px, currentColor 1px, transparent 0);
+  background-size: 24px 24px;
+  opacity: 0.03;
+}
+.dark .bg-pattern-dots {
+  opacity: 0.05;
+}
+
+.bg-pattern-organic {
+  background-image: radial-gradient(ellipse 80% 50% at 50% 50%, currentColor 0%, transparent 70%);
+  opacity: 0.02;
+}
+
 :root {
   --background: #ffffff;
   --foreground: #282828;
+  --gradient-regional: linear-gradient(135deg, rgba(72, 181, 121, 0.03) 0%, rgba(45, 130, 180, 0.02) 50%, rgba(72, 181, 121, 0.02) 100%);
 }
 
 .dark {
   --background: #0a0a0a;
   --foreground: #f4f4f4;
+  --gradient-regional: linear-gradient(135deg, rgba(72, 181, 121, 0.04) 0%, rgba(45, 130, 180, 0.03) 50%, rgba(72, 181, 121, 0.03) 100%);
 }
 
 body {
@@ -41,6 +118,11 @@ body {
   0%, 100% { transform: translateY(0) translateX(0); }
   33% { transform: translateY(-6px) translateX(3px); }
   66% { transform: translateY(4px) translateX(-3px); }
+}
+
+@keyframes icon-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.9; transform: scale(1.05); }
 }
 
 @media (prefers-reduced-motion: no-preference) {

@@ -11,7 +11,7 @@ export function HeroSection() {
   return (
     <section className="relative bg-white text-graphite dark:bg-graphite dark:text-white">
       <HeroBackground />
-      <div className="relative px-4 py-20 sm:px-6 sm:py-28 lg:px-8 lg:py-36">
+        <div className="relative px-4 py-24 sm:px-6 sm:py-32 lg:px-8 lg:py-40">
         <div className="mx-auto max-w-[1280px]">
           <div className="mx-auto max-w-3xl">
             <motion.p
@@ -20,7 +20,7 @@ export function HeroSection() {
               transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
               className="text-xs font-semibold uppercase tracking-[0.2em] text-primary"
             >
-              {company.name}
+              {company.name} · Tecnologia com raízes no Nordeste
             </motion.p>
             <motion.h1
               initial={{ opacity: 0, y: 24 }}
@@ -49,16 +49,16 @@ export function HeroSection() {
               <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
                 <Link
                   href="/contato"
-                  className="group inline-flex items-center justify-center gap-2 rounded-full bg-primary px-6 py-3.5 font-semibold text-white transition-colors hover:bg-primary-hover focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+                  className="group inline-flex items-center justify-center gap-2 rounded-full bg-primary px-6 py-3.5 font-semibold text-white btn-primary-cta hover:bg-primary-hover focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
                 >
                 {contact.primaryCTA}
-                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                <ArrowRight className="cta-arrow h-4 w-4" />
               </Link>
               </motion.div>
               <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
                 <Link
                   href="/servicos"
-                className="inline-flex items-center justify-center rounded-full border-2 border-graphite px-6 py-3.5 font-semibold text-graphite transition-colors hover:bg-graphite/5 focus:outline-none focus:ring-2 focus:ring-graphite focus:ring-offset-2 dark:border-white/30 dark:text-white dark:hover:bg-white/10 dark:focus:ring-white dark:focus:ring-offset-graphite"
+                className="inline-flex items-center justify-center rounded-full border-2 border-graphite px-6 py-3.5 font-semibold text-graphite transition-all duration-200 hover:bg-graphite/5 hover:border-graphite/30 focus:outline-none focus:ring-2 focus:ring-graphite focus:ring-offset-2 dark:border-white/30 dark:text-white dark:hover:bg-white/10 dark:focus:ring-white dark:focus:ring-offset-graphite"
               >
                 Ver serviços
               </Link>

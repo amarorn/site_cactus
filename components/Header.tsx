@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ArrowRight } from "lucide-react";
 import { ThemeToggle } from "./ThemeToggle";
 import { Logo } from "./Logo";
 import { navLinks } from "@/content/navigation";
@@ -31,7 +31,7 @@ export function Header() {
               key={link.href}
               href={link.href}
               className={cn(
-                "text-sm font-medium transition-colors hover:text-primary",
+                "text-sm font-medium transition-colors duration-200 hover:text-primary",
                 pathname === link.href ? "text-primary" : "text-graphite dark:text-white/90"
               )}
             >
@@ -44,9 +44,10 @@ export function Header() {
           <ThemeToggle />
           <Link
             href="/contato"
-            className="rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-primary-hover focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+            className="group inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-white btn-primary-cta hover:bg-primary-hover focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
           >
             {contact.primaryCTA}
+            <ArrowRight className="cta-arrow h-4 w-4" />
           </Link>
         </div>
 
@@ -92,9 +93,10 @@ export function Header() {
               <Link
                 href="/contato"
                 onClick={() => setMobileOpen(false)}
-                className="mt-2 rounded-full bg-primary px-5 py-3 text-center text-sm font-semibold text-white"
+                className="group mt-2 inline-flex w-full items-center justify-center gap-2 rounded-full bg-primary px-5 py-3 text-sm font-semibold text-white btn-primary-cta hover:bg-primary-hover"
               >
                 {contact.primaryCTA}
+                <ArrowRight className="cta-arrow h-4 w-4" />
               </Link>
             </nav>
           </motion.div>

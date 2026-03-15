@@ -51,8 +51,9 @@ const differentials = [
 
 export function WhyCactus() {
   return (
-    <section className="py-20 sm:py-24 bg-white dark:bg-graphite">
-      <div className="mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-8">
+    <section className="relative overflow-hidden py-24 sm:py-32 bg-white dark:bg-graphite">
+      <div className="pointer-events-none absolute inset-0 text-graphite dark:text-white bg-pattern-dots" aria-hidden />
+      <div className="relative mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -70,7 +71,7 @@ export function WhyCactus() {
           </p>
         </motion.div>
 
-        <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-20 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {differentials.map((item, i) => (
             <motion.div
               key={item.title}
@@ -78,9 +79,9 @@ export function WhyCactus() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-30px" }}
               transition={{ duration: 0.4, delay: i * 0.05 }}
-              className="flex gap-4 rounded-xl border border-graphite/10 dark:border-white/10 bg-white dark:bg-white/5 p-6"
+              className="group flex gap-4 rounded-xl border border-graphite/10 dark:border-white/10 bg-white dark:bg-white/5 p-6 hover-lift hover:border-primary/20"
             >
-              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
+              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary transition-colors duration-300 group-hover:bg-primary group-hover:text-white">
                 <item.icon className="h-6 w-6" />
               </div>
               <div>

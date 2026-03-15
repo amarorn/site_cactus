@@ -5,7 +5,7 @@ import { clientNames } from "@/content/clients";
 
 export function ClientStrip() {
   return (
-    <section className="border-y border-graphite/10 dark:border-white/10 bg-light-gray dark:bg-graphite/50 py-12">
+    <section className="border-y border-graphite/10 dark:border-white/10 bg-light-gray dark:bg-graphite/50 py-16">
       <div className="mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-8">
         <motion.p
           initial={{ opacity: 0 }}

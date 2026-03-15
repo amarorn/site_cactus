@@ -14,10 +14,10 @@ export function Footer() {
           <div className="lg:col-span-1">
             <Link href="/" className="inline-block" aria-label="Cactus System">
               <Image
-                src="/brand/logo-primary-dark.png"
+                src="/brand/logo-primary.svg"
                 alt="Cactus System"
-                width={140}
-                height={40}
+                width={220}
+                height={50}
                 className="h-9 w-auto"
               />
             </Link>

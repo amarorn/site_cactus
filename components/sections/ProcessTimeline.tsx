@@ -32,13 +32,10 @@ const steps = [
 
 export function ProcessTimeline() {
   return (
-    <section className="relative overflow-hidden border-t border-graphite/10 dark:border-white/10 bg-light-gray dark:bg-graphite/50 py-20 sm:py-24">
+    <section className="relative overflow-hidden border-t border-graphite/10 dark:border-white/10 bg-light-gray dark:bg-graphite/50 py-24 sm:py-32">
       <div
-        className="pointer-events-none absolute inset-0 opacity-[0.02] dark:opacity-[0.04]"
-        style={{
-          backgroundImage: `radial-gradient(circle at 2px 2px, currentColor 1px, transparent 0)`,
-          backgroundSize: "40px 40px",
-        }}
+        className="pointer-events-none absolute inset-0 text-graphite dark:text-white bg-pattern-dots"
+        aria-hidden
       />
       <div className="relative mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-8">
         <motion.div
@@ -58,7 +55,7 @@ export function ProcessTimeline() {
           </p>
         </motion.div>
 
-        <div className="mt-16 space-y-0">
+        <div className="mt-20 space-y-0">
           {steps.map((step, i) => (
             <motion.div
               key={step.title}

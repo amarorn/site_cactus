@@ -6,8 +6,13 @@ import { company } from "@/content/company";
 
 export function LocationSection() {
   return (
-    <section className="py-20 sm:py-24 bg-white dark:bg-graphite">
-      <div className="mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-8">
+    <section className="relative overflow-hidden py-24 sm:py-32 bg-white dark:bg-graphite">
+      <div
+        className="pointer-events-none absolute inset-0 opacity-100"
+        style={{ background: "var(--gradient-regional)" }}
+        aria-hidden
+      />
+      <div className="relative mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -21,7 +26,7 @@ export function LocationSection() {
             Sede em {company.location.full}
           </h2>
           <p className="mt-4 text-base leading-relaxed text-graphite/80 dark:text-white/80">
-            Atendimento nacional. Proximidade com o cliente e capacidade de
+            Do Nordeste para todo o Brasil. Proximidade com o cliente e capacidade de
             atuar em projetos estratégicos em qualquer região do país.
           </p>
           <div className="mt-8 inline-flex items-center gap-2 rounded-full bg-light-gray dark:bg-white/10 px-6 py-3">
