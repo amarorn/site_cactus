@@ -12,7 +12,6 @@ import { FirebaseInit } from "@/components/FirebaseInit";
 import { ClientOnlyWidgets } from "@/components/ClientOnlyWidgets";
 import { PersonalizationProvider } from "@/components/PersonalizationProvider";
 import { SKIP_TARGET_ID } from "@/components/SkipLink";
-import { AdSenseUnit } from "@/components/AdSenseUnit";
 
 const Footer = dynamic(
   () => import("@/components/Footer").then((m) => ({ default: m.Footer })),
@@ -27,10 +26,6 @@ const poppins = Poppins({
 
 const GOOGLE_SITE_VERIFICATION =
   process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION?.trim() || "";
-const GOOGLE_ADSENSE_ID =
-  process.env.NEXT_PUBLIC_GOOGLE_ADSENSE_ID?.trim() || "ca-pub-5278426429130746";
-const GA_MEASUREMENT_ID =
-  process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID?.trim() || "G-KEE4D49L62";
 
 export const metadata: Metadata = {
   title: "Cactus System | Desenvolvimento de Software, Dados e IA",
@@ -49,9 +44,6 @@ export const metadata: Metadata = {
       google: GOOGLE_SITE_VERIFICATION,
     },
   }),
-  ...(GOOGLE_ADSENSE_ID && {
-    other: { "google-adsense-account": GOOGLE_ADSENSE_ID },
-  }),
 };
 
 export default function RootLayout({
@@ -61,33 +53,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR" suppressHydrationWarning>
-      {GA_MEASUREMENT_ID && (
-        <>
-          <Script
-            src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
-            strategy="afterInteractive"
-          />
-          <Script
-            id="gtag-init"
-            strategy="afterInteractive"
-            dangerouslySetInnerHTML={{
-              __html: `
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
-                gtag('config', '${GA_MEASUREMENT_ID}');
-              `,
-            }}
-          />
-        </>
-      )}
-      {GOOGLE_ADSENSE_ID && (
-        <Script
-          src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${GOOGLE_ADSENSE_ID}`}
-          strategy="afterInteractive"
-          crossOrigin="anonymous"
-        />
-      )}
       <Script
         id="a11y-apply-inline"
         strategy="beforeInteractive"
@@ -107,15 +72,6 @@ export default function RootLayout({
               <main id={SKIP_TARGET_ID} tabIndex={-1}>
                 {children}
               </main>
-              {GOOGLE_ADSENSE_ID && (
-                <div className="mx-auto max-w-[1280px] px-4 py-6 sm:px-6 lg:px-8">
-                  <AdSenseUnit
-                    adSlot="7246010404"
-                    adFormat="auto"
-                    fullWidthResponsive
-                  />
-                </div>
-              )}
               <Footer />
             </PersonalizationProvider>
           </A11yProvider>
