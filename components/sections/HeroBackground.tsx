@@ -1,14 +1,51 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
+
+const HERO_VIDEO_SRC = "/videos/hero-background.mp4";
 
 type HeroBackgroundProps = {
   className?: string;
 };
 
 export function HeroBackground({ className }: HeroBackgroundProps) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    if (mq.matches) {
+      video.pause();
+    } else {
+      video.play().catch(() => {});
+    }
+    const handler = () => {
+      if (mq.matches) video.pause();
+      else video.play().catch(() => {});
+    };
+    mq.addEventListener("change", handler);
+    return () => mq.removeEventListener("change", handler);
+  }, []);
+
   return (
     <div className={cn("pointer-events-none absolute inset-0 overflow-hidden", className)}>
+      <video
+        ref={videoRef}
+        autoPlay
+        muted
+        loop
+        playsInline
+        className="absolute inset-0 h-full w-full object-cover"
+        aria-hidden
+      >
+        <source src={HERO_VIDEO_SRC} type="video/mp4" />
+      </video>
+      <div
+        className="absolute inset-0 bg-graphite/70 dark:bg-graphite/80"
+        aria-hidden
+      />
       <div
         className="absolute inset-0 opacity-[0.06] motion-gradient-shift dark:opacity-[0.05]"
         style={{ background: "var(--gradient-regional)", transformOrigin: "50% 50%" }}
