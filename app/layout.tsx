@@ -4,17 +4,14 @@ import { Poppins } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { Header } from "@/components/Header";
-import { Footer } from "@/components/Footer";
 import { JsonLd } from "@/components/JsonLd";
 import { GoogleAnalytics } from "@/components/GoogleAnalytics";
+import { ClientOnlyWidgets } from "@/components/ClientOnlyWidgets";
 
-const CustomCursor = dynamic(() => import("@/components/CustomCursor").then((m) => ({ default: m.CustomCursor })), {
-  ssr: false,
-});
-
-const WhatsAppFab = dynamic(() => import("@/components/WhatsAppFab").then((m) => ({ default: m.WhatsAppFab })), {
-  ssr: false,
-});
+const Footer = dynamic(
+  () => import("@/components/Footer").then((m) => ({ default: m.Footer })),
+  { ssr: true }
+);
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -54,8 +51,7 @@ export default function RootLayout({
       <body className={`${poppins.variable} font-sans antialiased`} suppressHydrationWarning>
         <GoogleAnalytics />
         <ThemeProvider>
-          <CustomCursor />
-          <WhatsAppFab />
+          <ClientOnlyWidgets />
           <JsonLd />
           <Header />
           <main>{children}</main>

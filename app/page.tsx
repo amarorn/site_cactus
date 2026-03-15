@@ -1,12 +1,45 @@
+import dynamic from "next/dynamic";
 import { HeroSection } from "@/components/sections/HeroSection";
-import { ClientStrip } from "@/components/sections/ClientStrip";
-import { ServiceGrid } from "@/components/sections/ServiceGrid";
-import { ProcessTimeline } from "@/components/sections/ProcessTimeline";
-import { WhyCactus } from "@/components/sections/WhyCactus";
-import { TechStack } from "@/components/sections/TechStack";
-import { LocationSection } from "@/components/sections/LocationSection";
-import { CTASection } from "@/components/sections/CTASection";
-import { SectionDivider } from "@/components/sections/SectionDivider";
+
+const ClientStrip = dynamic(
+  () => import("@/components/sections/ClientStrip").then((m) => ({ default: m.ClientStrip })),
+  { ssr: true }
+);
+
+const SectionDivider = dynamic(
+  () => import("@/components/sections/SectionDivider").then((m) => ({ default: m.SectionDivider })),
+  { ssr: true }
+);
+
+const ServiceGrid = dynamic(
+  () => import("@/components/sections/ServiceGrid").then((m) => ({ default: m.ServiceGrid })),
+  { ssr: true }
+);
+
+const ProcessTimeline = dynamic(
+  () => import("@/components/sections/ProcessTimeline").then((m) => ({ default: m.ProcessTimeline })),
+  { ssr: true }
+);
+
+const WhyCactus = dynamic(
+  () => import("@/components/sections/WhyCactus").then((m) => ({ default: m.WhyCactus })),
+  { ssr: true }
+);
+
+const TechStack = dynamic(
+  () => import("@/components/sections/TechStack").then((m) => ({ default: m.TechStack })),
+  { ssr: true }
+);
+
+const LocationSection = dynamic(
+  () => import("@/components/sections/LocationSection").then((m) => ({ default: m.LocationSection })),
+  { ssr: true }
+);
+
+const CTASection = dynamic(
+  () => import("@/components/sections/CTASection").then((m) => ({ default: m.CTASection })),
+  { ssr: true }
+);
 
 export default function HomePage() {
   return (

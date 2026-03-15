@@ -177,10 +177,7 @@ body {
   }
 }
 
-@keyframes grid-drift {
-  0%, 100% { background-position: 0 0; }
-  50% { background-position: 64px 64px; }
-}
+/* grid sem animacao (background-position nao e compositada; evita CLS) */
 
 @keyframes mesh-pulse {
   0%, 100% { opacity: 0.5; transform: scale(1); }
@@ -208,11 +205,12 @@ body {
   opacity: 0.05;
 }
 
+/* apenas transform e opacity (compositadas); border-radius animado causa CLS */
 @keyframes blob-morph {
-  0%, 100% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; transform: translate(0, 0) scale(1); }
-  25% { border-radius: 60% 40% 30% 70% / 50% 60% 40% 50%; transform: translate(2%, -1%) scale(1.02); }
-  50% { border-radius: 30% 70% 60% 40% / 50% 40% 60% 50%; transform: translate(-1%, 2%) scale(0.98); }
-  75% { border-radius: 70% 30% 50% 50% / 40% 60% 50% 50%; transform: translate(-2%, -1%) scale(1.01); }
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 1; }
+  25% { transform: translate(2%, -1%) scale(1.02); opacity: 0.95; }
+  50% { transform: translate(-1%, 2%) scale(0.98); opacity: 1; }
+  75% { transform: translate(-2%, -1%) scale(1.01); opacity: 0.97; }
 }
 
 @keyframes blob-float-slow {
@@ -221,7 +219,6 @@ body {
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .motion-grid { animation: grid-drift 35s ease-in-out infinite; }
   .motion-mesh { animation: mesh-pulse 14s ease-in-out infinite; }
   .motion-mesh-delay { animation: mesh-pulse 16s ease-in-out infinite 1.5s; }
   .motion-float { animation: float 22s ease-in-out infinite; }
@@ -231,7 +228,7 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .motion-grid, .motion-mesh, .motion-mesh-delay, .motion-float,
+  .motion-mesh, .motion-mesh-delay, .motion-float,
   .motion-gradient-shift, .motion-blob-morph, .motion-blob-float-slow { animation: none; }
 }
 
