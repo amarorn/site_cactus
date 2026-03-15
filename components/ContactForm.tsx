@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useFormStatus } from "react-dom";
 import { z } from "zod";
-import { sendContactForm } from "@/app/contato/actions";
+import { contact } from "@/content/contact";
 
 const schema = z.object({
   name: z.string().min(2, "Nome deve ter pelo menos 2 caracteres"),
@@ -65,11 +65,37 @@ export function ContactForm() {
       return;
     }
 
-    const res = await sendContactForm(result.data);
-    if (res.success) {
-      setStatus("success");
+    if (contact.formEndpoint) {
+      const body = new URLSearchParams();
+      Object.entries(result.data).forEach(([k, v]) => {
+        if (v != null && v !== "") body.append(k, String(v));
+      });
+      const res = await fetch(contact.formEndpoint, {
+        method: "POST",
+        body,
+      });
+      if (res.ok) {
+        setStatus("success");
+      } else {
+        setStatus("error");
+      }
     } else {
-      setStatus("error");
+      const params = new URLSearchParams({
+        subject: `Contato Cactus: ${result.data.name}`,
+        body: [
+          `Nome: ${result.data.name}`,
+          `Email: ${result.data.email}`,
+          result.data.company && `Empresa: ${result.data.company}`,
+          result.data.role && `Cargo: ${result.data.role}`,
+          result.data.service && `Serviço: ${result.data.service}`,
+          "",
+          result.data.message,
+        ]
+          .filter(Boolean)
+          .join("\n"),
+      });
+      window.location.href = `mailto:${contact.email}?${params.toString()}`;
+      setStatus("success");
     }
   }
 
