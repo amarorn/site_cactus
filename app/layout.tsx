@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   title: "Cactus System | Desenvolvimento de Software, Dados e IA",
   description:
     "Empresa de tecnologia em Natal/RN. Desenvolvimento de aplicativos, sistemas web, arquitetura e engenharia de dados, analytics, BI e IA aplicada. Atendimento nacional.",
-  metadataBase: new URL("https://cactussystem.com.br"),
+  metadataBase: new URL("https://cactussystems.com.br"),
   icons: {
     icon: "/brand/mark-green.png",
   },

@@ -32,7 +32,7 @@ export const privacy = {
     },
     {
       title: "8. Contato",
-      content: `Para dúvidas sobre esta política ou sobre o tratamento de seus dados, entre em contato: contato@cactussystem.com.br`,
+      content: `Para dúvidas sobre esta política ou sobre o tratamento de seus dados, entre em contato: contato@cactussystems.com.br`,
     },
   ],
 };

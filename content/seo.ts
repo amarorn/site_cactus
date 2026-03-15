@@ -2,7 +2,7 @@ export const seo = {
   defaultTitle: "Cactus System | Desenvolvimento de Software, Dados e IA",
   defaultDescription:
     "Empresa de tecnologia em Natal/RN. Desenvolvimento de aplicativos, sistemas web, arquitetura e engenharia de dados, analytics, BI e IA aplicada. Atendimento nacional.",
-  siteUrl: "https://cactussystem.com.br",
+  siteUrl: "https://cactussystems.com.br",
   locale: "pt_BR",
   keywords: [
     "desenvolvimento de software",
