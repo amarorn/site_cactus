@@ -6,6 +6,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { JsonLd } from "@/components/JsonLd";
 import { CustomCursor } from "@/components/CustomCursor";
+import { WhatsAppFab } from "@/components/WhatsAppFab";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -37,6 +38,7 @@ export default function RootLayout({
       <body className={`${poppins.variable} font-sans antialiased`}>
         <ThemeProvider>
           <CustomCursor />
+          <WhatsAppFab />
           <JsonLd />
           <Header />
           <main>{children}</main>
