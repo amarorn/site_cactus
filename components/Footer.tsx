@@ -88,7 +88,7 @@ export function Footer() {
         </div>
 
         <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 sm:flex-row">
-          <p className="text-sm text-white/60">
+          <p className="text-sm text-white/60" suppressHydrationWarning>
             {currentYear} {company.name}. Todos os direitos reservados.
           </p>
           <div className="flex gap-6">
