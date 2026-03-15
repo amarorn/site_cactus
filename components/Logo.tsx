@@ -14,8 +14,7 @@ export function Logo() {
   }, []);
 
   const isDark = mounted && resolvedTheme === "dark";
-  // Versoes monocromaticas com fundo transparente para evitar caixa escura no header
-  const logoSrc = isDark ? "/brand/logo-monochrome-white.png" : "/brand/logo-monochrome-black.png";
+  const logoSrc = isDark ? "/brand/logo-primary-dark.png" : "/brand/logo-primary-light.png";
 
   return (
     <Link
