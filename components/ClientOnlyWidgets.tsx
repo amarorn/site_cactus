@@ -23,7 +23,10 @@ const ChatWidget = dynamic(
   { ssr: false }
 );
 
-const chatEnabled = process.env.NEXT_PUBLIC_CHAT_ENABLED === "true";
+// Habilitado se explicito ou quando build e na Vercel (API /api/chat disponivel)
+const chatEnabled =
+  process.env.NEXT_PUBLIC_CHAT_ENABLED === "true" ||
+  process.env.NEXT_PUBLIC_VERCEL === "1";
 
 export function ClientOnlyWidgets() {
   return (

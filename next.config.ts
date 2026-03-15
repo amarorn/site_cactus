@@ -1,8 +1,11 @@
 import type { NextConfig } from "next";
 
+// Na Vercel (VERCEL=1) nao usa export para API routes funcionarem; no GitHub Actions usa export para Pages
 const nextConfig: NextConfig = {
-  output: "export",
-
+  ...(process.env.VERCEL ? {} : { output: "export" as const }),
+  env: {
+    NEXT_PUBLIC_VERCEL: process.env.VERCEL ?? "",
+  },
   images: {
     unoptimized: true,
     formats: ["image/webp", "image/avif"],
