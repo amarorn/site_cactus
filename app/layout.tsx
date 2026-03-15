@@ -12,6 +12,7 @@ import { FirebaseInit } from "@/components/FirebaseInit";
 import { ClientOnlyWidgets } from "@/components/ClientOnlyWidgets";
 import { PersonalizationProvider } from "@/components/PersonalizationProvider";
 import { SKIP_TARGET_ID } from "@/components/SkipLink";
+import { AdSenseUnit } from "@/components/AdSenseUnit";
 
 const Footer = dynamic(
   () => import("@/components/Footer").then((m) => ({ default: m.Footer })),
@@ -106,6 +107,15 @@ export default function RootLayout({
               <main id={SKIP_TARGET_ID} tabIndex={-1}>
                 {children}
               </main>
+              {GOOGLE_ADSENSE_ID && (
+                <div className="mx-auto max-w-[1280px] px-4 py-6 sm:px-6 lg:px-8">
+                  <AdSenseUnit
+                    adSlot="7246010404"
+                    adFormat="auto"
+                    fullWidthResponsive
+                  />
+                </div>
+              )}
               <Footer />
             </PersonalizationProvider>
           </A11yProvider>
