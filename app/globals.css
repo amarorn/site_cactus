@@ -466,6 +466,45 @@ body {
   .card-border-gradient:hover::before { animation: none; }
 }
 
+/* Service card 2026: asymmetric diagonal streak + 3D tilt (no symmetric border spin) */
+.service-card-motion {
+  transform-origin: 80% 100%;
+  transition: box-shadow 0.35s ease, transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.service-card-motion::after {
+  content: "";
+  position: absolute;
+  top: -60%;
+  left: -40%;
+  width: 70%;
+  height: 220%;
+  background: linear-gradient(
+    128deg,
+    transparent 0%,
+    transparent 35%,
+    rgba(72, 181, 121, 0.12) 48%,
+    rgba(72, 181, 121, 0.22) 52%,
+    transparent 65%,
+    transparent 100%
+  );
+  transform: rotate(-22deg);
+  opacity: 0;
+  transition: opacity 0.45s ease, transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
+  z-index: 0;
+}
+.service-card-motion:hover {
+  transform: perspective(900px) rotateX(1.5deg) rotateY(-3deg) scale(1.02);
+}
+.service-card-motion:hover::after {
+  opacity: 1;
+  transform: rotate(-22deg) translate(18%, 0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .service-card-motion:hover { transform: scale(1.02); }
+  .service-card-motion:hover::after { opacity: 0; transform: rotate(-22deg); }
+}
+
 @keyframes ripple {
   to {
     transform: scale(25);

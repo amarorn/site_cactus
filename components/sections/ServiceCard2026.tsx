@@ -13,7 +13,7 @@ type ServiceCard2026Props = {
 };
 
 /**
- * Service card: glassmorphism, hover scale + shadow expansion, border gradient, icon bounce.
+ * Service card: glassmorphism, hover scale + shadow. Asymmetric motion: diagonal streak + 3D tilt.
  * Use inside StaggeredItem for scroll reveal, or standalone.
  */
 export function ServiceCard2026({
@@ -25,14 +25,14 @@ export function ServiceCard2026({
   return (
     <Link
       href={href}
-      className="group relative flex h-full flex-col rounded-2xl p-6 card-border-gradient glass-card card-hover-shadow overflow-hidden"
+      className="group relative flex h-full flex-col rounded-2xl p-6 service-card-motion glass-card card-hover-shadow overflow-hidden"
     >
-      <span className="icon-bounce-hover mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white">
+      <span className="relative z-10 icon-bounce-hover mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white">
         <Icon className="h-6 w-6" />
       </span>
-      <h3 className="text-h3 font-semibold text-graphite dark:text-white">{title}</h3>
-      <p className="mt-2 flex-1 text-body-lg text-graphite/70 dark:text-white/70">{description}</p>
-      <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-primary transition-all duration-300 group-hover:gap-3">
+      <h3 className="relative z-10 text-h3 font-semibold text-graphite dark:text-white">{title}</h3>
+      <p className="relative z-10 mt-2 flex-1 text-body-lg text-graphite/70 dark:text-white/70">{description}</p>
+      <span className="relative z-10 mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-primary transition-all duration-300 group-hover:gap-3">
         Saiba mais
         <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
       </span>
