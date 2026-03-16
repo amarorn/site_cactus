@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 const METRICS = [
   { value: "+40", label: "projetos entregues" },
-  { value: "+10", label: "plataformas SaaS em produção" },
+  { value: "+10", label: "plataformas em produção" },
   { value: "+30", label: "pipelines de dados implementados" },
   { value: "20M+", label: "registros processados por mês" },
 ];
@@ -23,7 +23,7 @@ export function PortfolioSectionHero() {
             Portfólio
           </p>
           <h1 className="mt-3 text-3xl font-bold tracking-tight text-graphite dark:text-white sm:text-4xl lg:text-5xl balance">
-            Projetos e entregas
+            Casos de engenharia
           </h1>
           <p className="mt-5 text-lg leading-relaxed text-graphite/70 dark:text-white/70">
             Plataformas SaaS, pipelines de dados e sistemas de IA construídos com arquitetura

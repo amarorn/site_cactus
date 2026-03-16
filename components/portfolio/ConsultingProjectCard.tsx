@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight, Database, Cloud, GitBranch, Cpu } from "lucide-react";
+import { ArrowRight, Database, Cloud, GitBranch, Cpu, Layers, Code2 } from "lucide-react";
 import type { PortfolioProject } from "@/types/portfolio";
 
 const CATEGORY_ICONS: Record<string, React.ComponentType<{ className?: string }>> = {
@@ -11,6 +11,7 @@ const CATEGORY_ICONS: Record<string, React.ComponentType<{ className?: string }>
   "SaaS Platform": Cloud,
   "Data Engineering": GitBranch,
   "AI Systems": Cpu,
+  "Software Architecture": Layers,
 };
 
 function getCategoryIcon(category: string) {
@@ -36,7 +37,7 @@ export function ConsultingProjectCard({ project, index }: ConsultingProjectCardP
     >
       <Link
         href={`/portfolio/${project.slug}`}
-        className="flex h-full flex-col focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]"
+        className="flex flex-1 flex-col focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]"
       >
         <div className="relative aspect-[16/10] overflow-hidden bg-graphite/5 dark:bg-graphite/20">
           <Image
@@ -86,12 +87,28 @@ export function ConsultingProjectCard({ project, index }: ConsultingProjectCardP
               </span>
             )}
           </div>
-          <span className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-primary transition-all duration-200 group-hover:gap-3">
-            Ver arquitetura
-            <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-          </span>
         </div>
       </Link>
+      <div className="flex flex-wrap items-center gap-4 border-t border-graphite/10 dark:border-white/10 px-5 py-4 sm:px-6 sm:py-4">
+        <Link
+          href={`/portfolio/${project.slug}`}
+          className="inline-flex items-center gap-2 text-sm font-semibold text-primary transition-all duration-200 hover:gap-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)] rounded"
+        >
+          Ver arquitetura
+          <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+        </Link>
+        {project.repositoryUrl && (
+          <a
+            href={project.repositoryUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 text-sm font-medium text-graphite/70 dark:text-white/60 hover:text-primary transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)] rounded"
+          >
+            <Code2 className="h-4 w-4" />
+            Ver código
+          </a>
+        )}
+      </div>
     </motion.article>
   );
 }

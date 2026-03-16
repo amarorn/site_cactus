@@ -246,12 +246,25 @@ export function PortfolioPage({ project }: PortfolioPageProps) {
                 <ArrowRight className="cta-arrow h-4 w-4" />
               </CTALink>
             </div>
-            <Link
-              href="/portfolio"
-              className="mt-6 inline-block text-sm font-medium text-white/70 hover:text-primary transition-colors duration-200"
-            >
-              Voltar ao portfólio
-            </Link>
+            <div className="mt-6 flex flex-wrap items-center gap-4">
+              <Link
+                href="/portfolio"
+                className="text-sm font-medium text-white/70 hover:text-primary transition-colors duration-200"
+              >
+                Voltar ao portfólio
+              </Link>
+              {project.repositoryUrl && (
+                <a
+                  href={project.repositoryUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-sm font-medium text-white/70 hover:text-primary transition-colors duration-200"
+                >
+                  <Code2 className="h-4 w-4" />
+                  Ver código
+                </a>
+              )}
+            </div>
           </motion.div>
         </div>
       </section>

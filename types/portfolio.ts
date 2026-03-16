@@ -12,4 +12,5 @@ export interface PortfolioProject {
   architectureSteps?: string[];
   challenges?: string[];
   results?: string[];
+  repositoryUrl?: string;
 }

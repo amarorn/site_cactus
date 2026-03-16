@@ -12,11 +12,11 @@ const SectionDivider = dynamic(
 export const metadata: Metadata = {
   title: "Portfólio | Cactus System",
   description:
-    "Projetos e entregas: plataformas SaaS, pipelines de dados e sistemas de IA com arquitetura moderna e foco em escala.",
+    "Casos de engenharia: plataformas SaaS, pipelines de dados e sistemas de IA com arquitetura moderna e foco em escala.",
   openGraph: {
     title: "Portfólio | Cactus System",
     description:
-      "Projetos e entregas: plataformas SaaS, pipelines de dados e sistemas de IA com arquitetura moderna e foco em escala.",
+      "Casos de engenharia: plataformas SaaS, pipelines de dados e sistemas de IA com arquitetura moderna e foco em escala.",
     url: "/portfolio",
   },
 };
