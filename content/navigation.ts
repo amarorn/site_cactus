@@ -2,6 +2,7 @@ export const navLinks = [
   { href: "/", label: "Home" },
   { href: "/servicos", label: "Serviços" },
   { href: "/solucoes", label: "Soluções" },
+  { href: "/portfolio", label: "Portfólio" },
   { href: "/clientes", label: "Clientes e Cases" },
   { href: "/sobre", label: "Sobre" },
   { href: "/contato", label: "Contato" },
@@ -16,6 +17,7 @@ export const footerLinks = {
   ],
   company: [
     { href: "/sobre", label: "Sobre a Cactus" },
+    { href: "/portfolio", label: "Portfólio" },
     { href: "/clientes", label: "Clientes" },
     { href: "/contato", label: "Contato" },
   ],
