@@ -7,4 +7,9 @@ export interface PortfolioProject {
   highlights: string[];
   image: string;
   slug: string;
+  problemSolved?: string;
+  technicalImpact?: string;
+  architectureSteps?: string[];
+  challenges?: string[];
+  results?: string[];
 }

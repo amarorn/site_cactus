@@ -118,13 +118,21 @@
 }
 .btn-primary-cta:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(72, 181, 121, 0.35), 0 2px 8px rgba(0, 0, 0, 0.08);
+  box-shadow:
+    0 0 0 1px rgba(72, 181, 121, 0.2),
+    0 8px 24px rgba(72, 181, 121, 0.35),
+    0 12px 32px rgba(72, 181, 121, 0.15),
+    0 2px 8px rgba(0, 0, 0, 0.08);
 }
 .btn-primary-cta:active {
   transform: translateY(0);
 }
 .dark .btn-primary-cta:hover {
-  box-shadow: 0 8px 24px rgba(72, 181, 121, 0.4), 0 2px 8px rgba(0, 0, 0, 0.2);
+  box-shadow:
+    0 0 0 1px rgba(72, 181, 121, 0.3),
+    0 8px 24px rgba(72, 181, 121, 0.4),
+    0 12px 32px rgba(72, 181, 121, 0.2),
+    0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
 /* seta CTA - microanimacao */
@@ -420,6 +428,14 @@ body {
   50% { transform: translate(3%, -4%) scale(1.05); }
 }
 
+@keyframes portfolio-glow {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+.animate-portfolio-glow {
+  animation: portfolio-glow 8s ease-in-out infinite;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .motion-mesh { animation: mesh-pulse 14s ease-in-out infinite; }
   .motion-mesh-delay { animation: mesh-pulse 16s ease-in-out infinite 1.5s; }
@@ -431,7 +447,8 @@ body {
 
 @media (prefers-reduced-motion: reduce) {
   .motion-mesh, .motion-mesh-delay, .motion-float,
-  .motion-gradient-shift, .motion-blob-morph, .motion-blob-float-slow { animation: none; }
+  .motion-gradient-shift, .motion-blob-morph, .motion-blob-float-slow,
+  .animate-portfolio-glow { animation: none; }
 }
 
 /* 2026 card border gradient animation - transform only for 60fps */
@@ -591,4 +608,7 @@ html.a11y-font-125 {
   animation-duration: 0.01ms !important;
   animation-iteration-count: 1 !important;
   transition-duration: 0.01ms !important;
+}
+.a11y-reduce-motion [data-cursor-glow] {
+  display: none !important;
 }

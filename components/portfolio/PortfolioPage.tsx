@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight, Layers, Code2 } from "lucide-react";
+import { ArrowRight, Layers, Code2, ChevronDown, Target, Award } from "lucide-react";
 import type { PortfolioProject } from "@/types/portfolio";
 import { TechnologyBadge } from "@/components/ui/TechnologyBadge";
 import { ProjectHighlights } from "./ProjectHighlights";
@@ -65,13 +65,98 @@ export function PortfolioPage({ project }: PortfolioPageProps) {
                 <p className="mt-4 text-lg leading-relaxed text-graphite dark:text-white/90">
                   {project.description}
                 </p>
+                {project.technicalImpact && (
+                  <p className="mt-4 rounded-xl border border-primary/20 bg-primary/5 dark:bg-primary/10 px-4 py-3 text-sm leading-relaxed text-graphite dark:text-white/90">
+                    <strong className="text-primary">Impacto técnico:</strong>{" "}
+                    {project.technicalImpact}
+                  </p>
+                )}
               </motion.div>
+
+              {project.architectureSteps && project.architectureSteps.length > 0 && (
+                <motion.div
+                  initial={{ opacity: 0, y: 12 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.3, delay: 0.05 }}
+                  className="mt-12"
+                >
+                  <h2 className="flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-primary">
+                    <Layers className="h-4 w-4" />
+                    Arquitetura e fluxo de dados
+                  </h2>
+                  <div className="mt-4 flex flex-col gap-0 rounded-2xl border border-graphite/10 dark:border-white/10 bg-white dark:bg-white/5 p-4">
+                    {project.architectureSteps.map((step, i) => (
+                      <div key={i} className="flex flex-col items-center">
+                        <span className="rounded-lg border border-graphite/15 dark:border-white/15 bg-graphite/5 dark:bg-white/10 px-4 py-2.5 text-sm font-medium text-graphite dark:text-white w-full text-center">
+                          {step}
+                        </span>
+                        {i < project.architectureSteps!.length - 1 && (
+                          <ChevronDown className="my-1 h-5 w-5 text-primary/60" aria-hidden />
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                </motion.div>
+              )}
+
+              {project.challenges && project.challenges.length > 0 && (
+                <motion.div
+                  initial={{ opacity: 0, y: 12 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.3, delay: 0.1 }}
+                  className="mt-12"
+                >
+                  <h2 className="flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-primary">
+                    <Target className="h-4 w-4" />
+                    Desafios técnicos
+                  </h2>
+                  <ul className="mt-4 space-y-2">
+                    {project.challenges.map((c, i) => (
+                      <li
+                        key={i}
+                        className="flex gap-3 text-sm leading-relaxed text-graphite dark:text-white/90"
+                      >
+                        <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                        {c}
+                      </li>
+                    ))}
+                  </ul>
+                </motion.div>
+              )}
+
+              {project.results && project.results.length > 0 && (
+                <motion.div
+                  initial={{ opacity: 0, y: 12 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.3, delay: 0.15 }}
+                  className="mt-12"
+                >
+                  <h2 className="flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-primary">
+                    <Award className="h-4 w-4" />
+                    Resultados
+                  </h2>
+                  <ul className="mt-4 space-y-2">
+                    {project.results.map((r, i) => (
+                      <li
+                        key={i}
+                        className="flex gap-3 text-sm leading-relaxed text-graphite dark:text-white/90"
+                      >
+                        <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                        {r}
+                      </li>
+                    ))}
+                  </ul>
+                </motion.div>
+              )}
 
               <motion.div
                 initial={{ opacity: 0, y: 12 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.3, delay: 0.1 }}
+                transition={{ duration: 0.3, delay: 0.2 }}
                 className="mt-12"
               >
                 <h2 className="flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-primary">
@@ -101,32 +186,34 @@ export function PortfolioPage({ project }: PortfolioPageProps) {
                 </div>
               </motion.aside>
 
-              <motion.div
-                initial={{ opacity: 0, y: 12 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.3, delay: 0.1 }}
-                className="mt-8 rounded-2xl border border-graphite/10 dark:border-white/10 bg-graphite/5 dark:bg-primary/5 p-6"
-              >
-                <h3 className="text-sm font-semibold uppercase tracking-wider text-graphite dark:text-white">
-                  Arquitetura da solução
-                </h3>
-                <p className="mt-3 text-sm leading-relaxed text-graphite/80 dark:text-white/80">
-                  Solução desenhada com foco em escalabilidade, manutenção e
-                  evolução. Stack alinhada ao domínio do projeto e boas práticas
-                  de engenharia.
-                </p>
-                <div className="mt-4 flex flex-wrap gap-2">
-                  {project.technologies.slice(0, 6).map((tech) => (
-                    <span
-                      key={tech}
-                      className="rounded-md bg-white/80 dark:bg-graphite/80 px-2.5 py-1 text-xs font-medium text-graphite dark:text-white/90"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-              </motion.div>
+              {!project.architectureSteps?.length && (
+                <motion.div
+                  initial={{ opacity: 0, y: 12 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.3, delay: 0.1 }}
+                  className="mt-8 rounded-2xl border border-graphite/10 dark:border-white/10 bg-graphite/5 dark:bg-primary/5 p-6"
+                >
+                  <h3 className="text-sm font-semibold uppercase tracking-wider text-graphite dark:text-white">
+                    Arquitetura da solução
+                  </h3>
+                  <p className="mt-3 text-sm leading-relaxed text-graphite/80 dark:text-white/80">
+                    Solução desenhada com foco em escalabilidade, manutenção e
+                    evolução. Stack alinhada ao domínio do projeto e boas práticas
+                    de engenharia.
+                  </p>
+                  <div className="mt-4 flex flex-wrap gap-2">
+                    {project.technologies.slice(0, 6).map((tech) => (
+                      <span
+                        key={tech}
+                        className="rounded-md bg-white/80 dark:bg-graphite/80 px-2.5 py-1 text-xs font-medium text-graphite dark:text-white/90"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </motion.div>
+              )}
             </div>
           </div>
         </div>

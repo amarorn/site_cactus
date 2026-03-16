@@ -28,7 +28,7 @@ export function RippleWrapper({ children, className = "" }: RippleWrapperProps) 
   return (
     <span
       ref={ref}
-      className={`relative inline-block overflow-hidden ${className}`}
+      className={`relative inline-block ${className}`}
       onClick={handleClick}
     >
       {children}

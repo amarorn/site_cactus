@@ -12,6 +12,7 @@ import { FirebaseInit } from "@/components/FirebaseInit";
 import { ClientOnlyWidgets } from "@/components/ClientOnlyWidgets";
 import { PersonalizationProvider } from "@/components/PersonalizationProvider";
 import { SKIP_TARGET_ID } from "@/components/SkipLink";
+import { GlobalEffects } from "@/components/layout/GlobalEffects";
 
 const Footer = dynamic(
   () => import("@/components/Footer").then((m) => ({ default: m.Footer })),
@@ -77,14 +78,17 @@ export default function RootLayout({
         <ThemeProvider>
           <A11yProvider>
             <PersonalizationProvider>
-              <SkipLink />
-              <ClientOnlyWidgets />
-              <JsonLd />
-              <Header />
-              <main id={SKIP_TARGET_ID} tabIndex={-1}>
-                {children}
-              </main>
-              <Footer />
+              <GlobalEffects />
+              <div className="relative z-10">
+                <SkipLink />
+                <ClientOnlyWidgets />
+                <JsonLd />
+                <Header />
+                <main id={SKIP_TARGET_ID} tabIndex={-1}>
+                  {children}
+                </main>
+                <Footer />
+              </div>
             </PersonalizationProvider>
           </A11yProvider>
         </ThemeProvider>
