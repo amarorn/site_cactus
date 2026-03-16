@@ -6,16 +6,20 @@ import { motion } from "framer-motion";
 import { ArrowRight, Database, Cloud, GitBranch, Cpu, Layers, Code2 } from "lucide-react";
 import type { PortfolioProject } from "@/types/portfolio";
 
-const CATEGORY_ICONS: Record<string, React.ComponentType<{ className?: string }>> = {
-  "Data Platform": Database,
-  "SaaS Platform": Cloud,
-  "Data Engineering": GitBranch,
-  "AI Systems": Cpu,
-  "Software Architecture": Layers,
-};
-
-function getCategoryIcon(category: string) {
-  return CATEGORY_ICONS[category] ?? Database;
+function ProjectCategoryIcon({ category }: { category: string }) {
+  switch (category) {
+    case "SaaS Platform":
+      return <Cloud className="h-3.5 w-3.5" />;
+    case "Data Engineering":
+      return <GitBranch className="h-3.5 w-3.5" />;
+    case "AI Systems":
+      return <Cpu className="h-3.5 w-3.5" />;
+    case "Software Architecture":
+      return <Layers className="h-3.5 w-3.5" />;
+    case "Data Platform":
+    default:
+      return <Database className="h-3.5 w-3.5" />;
+  }
 }
 
 type ConsultingProjectCardProps = {
@@ -24,8 +28,6 @@ type ConsultingProjectCardProps = {
 };
 
 export function ConsultingProjectCard({ project, index }: ConsultingProjectCardProps) {
-  const Icon = getCategoryIcon(project.category);
-
   return (
     <motion.article
       initial={{ opacity: 0, y: 24 }}
@@ -53,7 +55,7 @@ export function ConsultingProjectCard({ project, index }: ConsultingProjectCardP
             aria-hidden
           />
           <span className="absolute bottom-3 left-4 flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1.5 text-xs font-medium text-white backdrop-blur-sm dark:bg-white/5">
-            <Icon className="h-3.5 w-3.5" />
+            <ProjectCategoryIcon category={project.category} />
             {project.category}
           </span>
         </div>

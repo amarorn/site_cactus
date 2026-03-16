@@ -50,7 +50,7 @@ export async function POST(request: NextRequest) {
           { status: 502, headers: { "Content-Type": "application/json" } }
         );
       }
-    } catch (e) {
+    } catch {
       return new Response(
         JSON.stringify({ error: "Webhook request failed" }),
         { status: 502,

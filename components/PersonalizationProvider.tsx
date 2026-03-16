@@ -22,7 +22,7 @@ export function PersonalizationProvider({ children }: { children: React.ReactNod
 
   useEffect(() => {
     const value = getSegmentFromCookie(document.cookie);
-    setSegment(parseSegment(value));
+    queueMicrotask(() => setSegment(parseSegment(value)));
   }, []);
 
   const value = useMemo(() => ({ segment }), [segment]);

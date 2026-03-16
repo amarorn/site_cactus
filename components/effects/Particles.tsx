@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useEffect, useCallback } from "react";
+import { useRef, useEffect } from "react";
 
 const PARTICLE_COUNT = 30;
 const MIN_SIZE = 2;
@@ -36,40 +36,35 @@ export function Particles() {
   const rafRef = useRef<number>(0);
   const timeRef = useRef(0);
 
-  const draw = useCallback(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-
-    const ctx = canvas.getContext("2d", { alpha: true });
-    if (!ctx) return;
-
-    const { width, height } = canvas;
-    ctx.clearRect(0, 0, width, height);
-
-    const t = timeRef.current * 0.001;
-    particlesRef.current.forEach((p) => {
-      const drift = Math.sin(t + p.phase) * 0.15;
-      const x = (p.x + (p.vx + drift) * 2) % (width + 50);
-      const y = (p.y + (p.vy + drift * 0.5) * 2) % (height + 50);
-      const px = x < 0 ? x + width + 50 : x > width ? x - width - 50 : x;
-      const py = y < 0 ? y + height + 50 : y > height ? y - height - 50 : y;
-      p.x = px;
-      p.y = py;
-
-      ctx.beginPath();
-      ctx.arc(px, py, p.size, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(255, 255, 255, ${p.opacity * (0.7 + 0.3 * Math.sin(t + p.phase))})`;
-      ctx.fill();
-    });
-
-    timeRef.current += 16;
-    rafRef.current = requestAnimationFrame(draw);
-  }, []);
+  const drawRef = useRef<() => void>(() => {});
 
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
     if (typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    drawRef.current = () => {
+      const ctx = canvas.getContext("2d", { alpha: true });
+      if (!ctx) return;
+      const { width, height } = canvas;
+      ctx.clearRect(0, 0, width, height);
+      const t = timeRef.current * 0.001;
+      particlesRef.current.forEach((p) => {
+        const drift = Math.sin(t + p.phase) * 0.15;
+        const x = (p.x + (p.vx + drift) * 2) % (width + 50);
+        const y = (p.y + (p.vy + drift * 0.5) * 2) % (height + 50);
+        const px = x < 0 ? x + width + 50 : x > width ? x - width - 50 : x;
+        const py = y < 0 ? y + height + 50 : y > height ? y - height - 50 : y;
+        p.x = px;
+        p.y = py;
+        ctx.beginPath();
+        ctx.arc(px, py, p.size, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(255, 255, 255, ${p.opacity * (0.7 + 0.3 * Math.sin(t + p.phase))})`;
+        ctx.fill();
+      });
+      timeRef.current += 16;
+      rafRef.current = requestAnimationFrame(() => drawRef.current());
+    };
 
     const resize = () => {
       const dpr = Math.min(window.devicePixelRatio, 2);
@@ -93,11 +88,11 @@ export function Particles() {
         rafRef.current = 0;
       } else {
         timeRef.current = performance.now();
-        rafRef.current = requestAnimationFrame(draw);
+        rafRef.current = requestAnimationFrame(() => drawRef.current());
       }
     };
 
-    if (!document.hidden) rafRef.current = requestAnimationFrame(draw);
+    if (!document.hidden) rafRef.current = requestAnimationFrame(() => drawRef.current());
     document.addEventListener("visibilitychange", handleVisibility);
 
     return () => {
@@ -105,7 +100,7 @@ export function Particles() {
       document.removeEventListener("visibilitychange", handleVisibility);
       cancelAnimationFrame(rafRef.current);
     };
-  }, [draw]);
+  }, []);
 
   return (
     <canvas

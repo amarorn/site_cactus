@@ -18,29 +18,27 @@ export function CursorGlow() {
     targetY.current = clientY;
   }, []);
 
-  const tick = useCallback(() => {
-    x.current += (targetX.current - x.current) * LERP;
-    y.current += (targetY.current - y.current) * LERP;
-
-    const el = ref.current;
-    if (el) {
-      el.style.transform = `translate3d(${x.current}px, ${y.current}px, 0) translate(-50%, -50%)`;
-    }
-
-    rafRef.current = requestAnimationFrame(tick);
-  }, []);
+  const tickRef = useRef<() => void>(() => {});
 
   useEffect(() => {
     if (typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    tickRef.current = () => {
+      x.current += (targetX.current - x.current) * LERP;
+      y.current += (targetY.current - y.current) * LERP;
+      const el = ref.current;
+      if (el) {
+        el.style.transform = `translate3d(${x.current}px, ${y.current}px, 0) translate(-50%, -50%)`;
+      }
+      rafRef.current = requestAnimationFrame(() => tickRef.current());
+    };
     const onMove = (e: MouseEvent) => updatePosition(e.clientX, e.clientY);
     window.addEventListener("mousemove", onMove, { passive: true });
-
-    rafRef.current = requestAnimationFrame(tick);
+    rafRef.current = requestAnimationFrame(() => tickRef.current());
     return () => {
       window.removeEventListener("mousemove", onMove);
       cancelAnimationFrame(rafRef.current);
     };
-  }, [tick, updatePosition]);
+  }, [updatePosition]);
 
   return (
     <div

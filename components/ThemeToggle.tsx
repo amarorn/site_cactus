@@ -15,7 +15,7 @@ export function ThemeToggle({ variant = "default" }: ThemeToggleProps) {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
+    queueMicrotask(() => setMounted(true));
   }, []);
 
   const isDark = mounted && resolvedTheme === "dark";

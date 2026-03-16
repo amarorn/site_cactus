@@ -37,7 +37,7 @@ export function PortfolioSectionHero() {
           transition={{ duration: 0.4, delay: 0.1 }}
           className="mt-12 grid grid-cols-2 gap-6 sm:grid-cols-4"
         >
-          {METRICS.map((m, i) => (
+          {METRICS.map((m) => (
             <div
               key={m.label}
               className="rounded-xl border border-graphite/10 dark:border-white/10 bg-white dark:bg-white/5 px-5 py-4 shadow-sm"

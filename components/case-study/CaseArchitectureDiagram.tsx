@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import type { CaseStudyDetail } from "@/content/case-studies";
-import type { ArchitectureNode, ArchitectureLink } from "@/content/case-studies";
+import type { ArchitectureNode } from "@/content/case-studies";
 import { useReducedMotion } from "@/lib/hooks";
 
 const kindColors: Record<ArchitectureNode["kind"], string> = {

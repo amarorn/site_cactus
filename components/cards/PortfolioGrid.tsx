@@ -30,7 +30,7 @@ const item = {
   },
 };
 
-function PortfolioCard({ project, index }: { project: Project; index: number }) {
+function PortfolioCard({ project }: { project: Project }) {
   const href = `/portfolio/${project.slug}`;
   const imgSrc =
     project.image ?? "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80";
@@ -98,8 +98,8 @@ export const PortfolioGridCards = memo(function PortfolioGridCards({
       viewport={{ once: true, margin: "-60px" }}
       className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3"
     >
-      {projects.map((project, index) => (
-        <PortfolioCard key={project.id} project={project} index={index} />
+      {projects.map((project) => (
+        <PortfolioCard key={project.id} project={project} />
       ))}
     </motion.div>
   );

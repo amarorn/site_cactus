@@ -28,7 +28,6 @@ export function Navbar({
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const textMuted = onDark ? "text-white/90" : "text-graphite/90 dark:text-white/90";
-  const textActive = "text-primary";
   const hover = onDark ? "hover:text-primary hover:bg-white/10" : "hover:text-primary hover:bg-graphite/10 dark:hover:bg-white/10";
 
   return (

@@ -44,7 +44,7 @@ export function CustomCursor() {
       document.body.removeEventListener("mouseenter", handleEnter);
       document.body.classList.remove("cursor-custom");
     };
-  }, []);
+  }, [visible]);
 
   useEffect(() => {
     if (visible) document.body.classList.add("cursor-custom");

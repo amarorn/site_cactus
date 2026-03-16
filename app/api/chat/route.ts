@@ -9,8 +9,6 @@ export const maxDuration = 30;
 
 type Message = { role: "user" | "assistant"; content: string };
 
-const encoder = new TextEncoder();
-
 export async function POST(request: NextRequest) {
   const apiKey = process.env.OPENAI_API_KEY;
   if (!apiKey) {

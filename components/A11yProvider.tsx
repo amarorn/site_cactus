@@ -30,7 +30,7 @@ export function A11yProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     const stored = getA11yPreferences();
-    setPreferences(stored);
+    queueMicrotask(() => setPreferences(stored));
     applyA11yClasses(stored);
   }, []);
 

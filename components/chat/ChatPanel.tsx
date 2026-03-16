@@ -3,7 +3,6 @@
 import { useState, useRef, useEffect } from "react";
 import { X, Send, Loader2 } from "lucide-react";
 import { ChatMessage } from "./ChatMessage";
-import { cn } from "@/lib/utils";
 
 type Message = { role: "user" | "assistant"; content: string };
 
